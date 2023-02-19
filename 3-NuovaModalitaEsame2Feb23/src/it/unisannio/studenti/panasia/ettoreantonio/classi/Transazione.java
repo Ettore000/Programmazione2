@@ -1,10 +1,9 @@
 package it.unisannio.studenti.panasia.ettoreantonio.classi;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.util.HashMap;
+import java.util.InputMismatchException;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -17,7 +16,7 @@ public class Transazione {
 		this.ip = ip;
 		this.libri = new HashMap<String, Libro>();
 	}
-	
+
 	public char getTipo() {
 		return tipo;
 	}
@@ -36,57 +35,66 @@ public class Transazione {
 	public Map<String, Libro> getLibri() {
 		return libri;
 	}
-	
+
 	public void addLibri(String chiave, Libro libro) {
 		libri.put(chiave, libro);
 	}
-	
-	public static Transazione read() throws IOException{
-		Scanner sc = new Scanner(System.in);
-		
-		System.out.println("Tipo ('f' o 'o'): ");
-		char tipo=sc.next().charAt(0);sc.nextLine();
-		if(tipo=='\0') {
-			return null;
-		} else if(tipo!='f' && tipo!='o') {
-			return null;
-		}
-		
-		System.out.println("ID: ");
-		int id=sc.nextInt();sc.nextLine();
-		if(id<0)return null;
-		
-		System.out.println("Data: ");
-		String data=sc.nextLine();
-		if(data.equals(""))return null;
-		
-		String citta="", ip="";
-		if(tipo=='f') {
-			System.out.println("Citta': ");
-			citta=sc.nextLine();
+
+	public static Transazione read() throws IOException, InputMismatchException{
+		//si inizializzano tutti gli identificatori prima del blocco try
+		int id=0;
+		String data="", citta="", ip="";
+		char tipo='\0';
+		//Scanner viene messo all'interno di try come parametro perché alla fine del blocco viene automaticamento chiuso, omettendo sc.close()
+		try(Scanner sc = new Scanner(System.in)) {
+			System.out.println("Tipo ('f' o 'o'): ");
+			//si utilizza charAt(0) per leggere solo il primo carattere dopo il puntatore dello Scanner
+			//dopodiché si va a capo
+			tipo=sc.next().charAt(0);sc.nextLine();
+			//si verifica la validità di tipo se non è nulla o ha valori diversi da 'f' e 'o'
+			if(tipo=='\0' || (tipo!='f' && tipo!='o')) {
+				return null;
+			}
+
+			System.out.println("ID: ");
+			//legge il tipo Int e va a capo
+			id=sc.nextInt();sc.nextLine();
+			//non può esistere un prezzo negativo
+			if(id<0)return null;
+
+			System.out.println("Data: ");
+			data=sc.nextLine();
 			if(data.equals(""))return null;
-		} else {
-			System.out.println("IP: ");
-			ip=sc.nextLine();
-			if(data.equals(""))return null;
+
+			if(tipo=='f') {
+				System.out.println("Citta': ");
+				citta=sc.nextLine();
+				if(citta.equals(""))return null;
+			} else {
+				System.out.println("IP: ");
+				ip=sc.nextLine();
+				if(ip.equals(""))return null;
+			}
+		} catch (InputMismatchException e) {
+			//si avverte che qualcosa non è valido
+			System.err.println("Errore nella registrazione di una transazione");
+			//si usa throw perché ferma il programma invece di semplicemente stampare l'errore e continuare
+			throw e;
 		}
-		
 		return new Transazione(tipo, id, data, citta, ip);
 	}
-	
-	public static Transazione read(String nomeFile) throws FileNotFoundException{
-		Scanner sc = new Scanner(new File(nomeFile));
-		
+
+	public static Transazione read(Scanner sc){
 		if(!sc.hasNext())return null;
 		char tipo=sc.next().charAt(0);
-		
+
 		if(!sc.hasNextInt())return null;
 		int id=sc.nextInt();
-		
+
 		if(!sc.hasNext())return null;
 		String data=sc.next();
-		
-		
+
+
 		String citta="", ip="";
 		if(tipo=='f') {
 			if(!sc.hasNext())return null;
@@ -95,28 +103,28 @@ public class Transazione {
 			if(!sc.hasNext())return null;
 			ip=sc.next();
 		}
-		
+
 		return new Transazione(tipo, id, data, citta, ip);
 	}
-	
+
 	public double costoTotale() {
 		double costoTotale=0;
-		
+
 		for(Libro libro: libri.values())costoTotale+=libro.getPrezzo();
-		
+
 		return costoTotale;
 	}
-	
+
 	public String toString() {
 		StringBuilder sb=new StringBuilder();
-		
+
 		sb.append(tipo+" "+id+" "+data+" "+citta+ip+"\n");
 		for(Libro libro:libri.values())sb.append(libro.toString());
 		sb.append("\n");
-		
+
 		return sb.toString();
 	}
-	
+
 	public void print(PrintStream nomeFile) {
 		nomeFile.println("'"+tipo+"' "+id+" "+data+" "+citta+ip+"\n");
 		for(Libro libro:libri.values())nomeFile.println(libro.toString());

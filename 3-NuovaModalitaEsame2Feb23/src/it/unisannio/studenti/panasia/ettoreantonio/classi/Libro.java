@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import it.unisannio.studenti.panasia.ettoreantonio.util.Costante;
@@ -14,7 +15,7 @@ public class Libro {
 		this.autore = autore;
 		this.prezzo = prezzo;
 	}
-	
+
 	public String getTitolo() {
 		return titolo;
 	}
@@ -24,50 +25,52 @@ public class Libro {
 	public double getPrezzo() {
 		return prezzo;
 	}
-	
-	public static Libro read() throws IOException{
-		Scanner sc = new Scanner(System.in);
-		
-		System.out.println("Titolo: ");
-		String titolo=sc.nextLine();
-		if(titolo.equals(""))return null;
-		
-		System.out.println("Autore: ");
-		String autore=sc.nextLine();
-		if(autore.equals(""))return null;
-		
-		System.out.println("Prezzo: ");
-		double prezzo=sc.nextDouble();sc.nextLine();
-		if(prezzo<0)return null;
-		
+
+	public static Libro read() throws IOException, InputMismatchException{
+		String titolo="", autore="";
+		double prezzo=0;
+		try(Scanner sc = new Scanner(System.in)) {
+			System.out.println("Titolo: ");
+			titolo=sc.nextLine();
+			if(titolo.equals(""))return null;
+
+			System.out.println("Autore: ");
+			autore=sc.nextLine();
+			if(autore.equals(""))return null;
+
+			System.out.println("Prezzo: ");
+			prezzo=sc.nextDouble();sc.nextLine();
+			if(prezzo<0)return null;
+		} catch (InputMismatchException e) {
+			System.err.println("***Errore nella registrazione di un libro***");
+			throw e;
+		}
 		return new Libro(titolo, autore, prezzo);
 	}
-	
-	public static Libro read(String nomeFile) throws FileNotFoundException {
-		Scanner sc = new Scanner(new File(nomeFile));
-		
+
+	public static Libro read(Scanner sc) {
 		if(!sc.hasNextLine())return null;
 		String titolo=sc.nextLine();
-		
+
 		if(!sc.hasNextLine())return null;
 		String autore=sc.nextLine();
-		
+
 		if(!sc.hasNextDouble())return null;
 		double prezzo=sc.nextDouble();
-		
+
 		return new Libro(titolo, autore, prezzo);
 	}
-	
+
 	public String toString() {
 		StringBuilder sb=new StringBuilder();
-		
+
 		sb.append(titolo+"\n");
 		sb.append(autore+"\n");
 		sb.append(prezzo);
-		
+
 		return sb.toString();
 	}
-	
+
 	private String titolo, autore;
 	private double prezzo;
 }
