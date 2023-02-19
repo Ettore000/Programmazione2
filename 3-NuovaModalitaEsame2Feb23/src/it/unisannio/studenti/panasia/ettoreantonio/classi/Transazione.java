@@ -16,7 +16,7 @@ public class Transazione {
 		this.ip = ip;
 		this.libri = new HashMap<String, Libro>();
 	}
-
+	
 	public char getTipo() {
 		return tipo;
 	}
@@ -35,11 +35,10 @@ public class Transazione {
 	public Map<String, Libro> getLibri() {
 		return libri;
 	}
-
+	
 	public void addLibri(String chiave, Libro libro) {
 		libri.put(chiave, libro);
 	}
-
 	public static Transazione read(Scanner sc) throws IOException, InputMismatchException{
 		//si inizializzano tutti gli identificatori prima del blocco try
 		int id=0;
