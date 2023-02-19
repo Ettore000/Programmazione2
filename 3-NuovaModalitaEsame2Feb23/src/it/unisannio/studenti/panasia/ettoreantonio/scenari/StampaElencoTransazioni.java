@@ -14,10 +14,11 @@ public class StampaElencoTransazioni {
 		 * ID Data Citta IP Totale
 		 * con Totale = totale costo della transazione
 		 */
+		//pppprova
 		
-		Azienda azienda;
+		Azienda azienda=new Azienda();
 		Transazione transazione = Transazione.read(Costante.TRANSAZIONE);
-		for(Transazione transazione: )System.out.println(transazione);
+		//for(azienda: azienda.getTransazioni().values())System.out.println(transazione);
 		System.out.println("***Scenario concluso con successo***");
 	}
 }
