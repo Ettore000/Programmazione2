@@ -1,13 +1,8 @@
 package it.unisannio.studenti.panasia.ettoreantonio.classi;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.PrintStream;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
-import it.unisannio.studenti.panasia.ettoreantonio.util.Costante;
 
 public class Libro {
 	public Libro(String titolo, String autore, double prezzo) {
@@ -26,10 +21,10 @@ public class Libro {
 		return prezzo;
 	}
 
-	public static Libro read() throws IOException, InputMismatchException{
+	public static Libro read(Scanner sc) throws IOException, InputMismatchException{
 		String titolo="", autore="";
 		double prezzo=0;
-		try(Scanner sc = new Scanner(System.in)) {
+		try {
 			System.out.println("Titolo: ");
 			titolo=sc.nextLine();
 			if(titolo.equals(""))return null;
@@ -39,6 +34,7 @@ public class Libro {
 			if(autore.equals(""))return null;
 
 			System.out.println("Prezzo: ");
+			//TODO come posso risolvere per il problema dell'eccezione se inserisco il numero con il punto anziché con la virgola?
 			prezzo=sc.nextDouble();sc.nextLine();
 			if(prezzo<0)return null;
 		} catch (InputMismatchException e) {
@@ -48,7 +44,7 @@ public class Libro {
 		return new Libro(titolo, autore, prezzo);
 	}
 
-	public static Libro read(Scanner sc) {
+	public static Libro readFile(Scanner sc) {
 		if(!sc.hasNextLine())return null;
 		String titolo=sc.nextLine();
 

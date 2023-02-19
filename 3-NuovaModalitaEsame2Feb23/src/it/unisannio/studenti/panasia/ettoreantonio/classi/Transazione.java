@@ -40,13 +40,12 @@ public class Transazione {
 		libri.put(chiave, libro);
 	}
 
-	public static Transazione read() throws IOException, InputMismatchException{
+	public static Transazione read(Scanner sc) throws IOException, InputMismatchException{
 		//si inizializzano tutti gli identificatori prima del blocco try
 		int id=0;
 		String data="", citta="", ip="";
 		char tipo='\0';
-		//Scanner viene messo all'interno di try come parametro perché alla fine del blocco viene automaticamento chiuso, omettendo sc.close()
-		try(Scanner sc = new Scanner(System.in)) {
+		try {
 			System.out.println("Tipo ('f' o 'o'): ");
 			//si utilizza charAt(0) per leggere solo il primo carattere dopo il puntatore dello Scanner
 			//dopodiché si va a capo
@@ -62,7 +61,7 @@ public class Transazione {
 			//non può esistere un prezzo negativo
 			if(id<0)return null;
 
-			System.out.println("Data: ");
+			System.out.println("Data (GGMMAAAA): ");
 			data=sc.nextLine();
 			if(data.equals(""))return null;
 
@@ -71,7 +70,7 @@ public class Transazione {
 				citta=sc.nextLine();
 				if(citta.equals(""))return null;
 			} else {
-				System.out.println("IP: ");
+				System.out.println("IP (xxx.xxx.xxx.xxx): ");
 				ip=sc.nextLine();
 				if(ip.equals(""))return null;
 			}
@@ -84,7 +83,7 @@ public class Transazione {
 		return new Transazione(tipo, id, data, citta, ip);
 	}
 
-	public static Transazione read(Scanner sc){
+	public static Transazione readFile(Scanner sc){
 		if(!sc.hasNext())return null;
 		char tipo=sc.next().charAt(0);
 
