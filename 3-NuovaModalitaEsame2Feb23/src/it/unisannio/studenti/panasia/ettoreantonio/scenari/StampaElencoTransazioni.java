@@ -5,7 +5,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
-import it.unisannio.studenti.panasia.ettoreantonio.classi.Azienda;
 import it.unisannio.studenti.panasia.ettoreantonio.classi.Transazione;
 import it.unisannio.studenti.panasia.ettoreantonio.util.Costante;
 
@@ -16,16 +15,15 @@ public class StampaElencoTransazioni {
 		 * ID Data Citta IP Totale
 		 * con Totale = totale costo della transazione
 		 */
-		Scanner sc=new Scanner(new File(Costante.TRANSAZIONE));
 		
-		//Crea la prima istanza e definisce la variabile
-		Transazione transazione = Transazione.read(sc);
+		//Istanze
+		Scanner sc=new Scanner(new File(Costante.TRANSAZIONE));
+		Transazione transazione = Transazione.readFile(sc);
 		
 		//Read Loop Pattern
 		//continua il read loop pattern finché non ci sono più dati nel File di ingresso
 		while (transazione!=null) {
-			transazione=Transazione.read(sc
-					);
+			transazione=Transazione.readFile(sc);
 			System.out.println(transazione);
 		}
 		
