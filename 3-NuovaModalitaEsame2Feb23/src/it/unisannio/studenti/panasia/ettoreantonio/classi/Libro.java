@@ -44,8 +44,7 @@ public class Libro {
 	}
 	
 	public static Libro read(String nomeFile) throws FileNotFoundException {
-		File file = new File(nomeFile);
-		Scanner sc = new Scanner(file);
+		Scanner sc = new Scanner(new File(nomeFile));
 		
 		if(!sc.hasNextLine())return null;
 		String titolo=sc.nextLine();

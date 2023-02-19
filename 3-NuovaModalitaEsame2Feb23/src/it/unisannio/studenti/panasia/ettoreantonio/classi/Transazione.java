@@ -75,8 +75,7 @@ public class Transazione {
 	}
 	
 	public static Transazione read(String nomeFile) throws FileNotFoundException{
-		File file = new File(nomeFile);
-		Scanner sc = new Scanner(file);
+		Scanner sc = new Scanner(new File(nomeFile));
 		
 		if(!sc.hasNext())return null;
 		char tipo=sc.next().charAt(0);
