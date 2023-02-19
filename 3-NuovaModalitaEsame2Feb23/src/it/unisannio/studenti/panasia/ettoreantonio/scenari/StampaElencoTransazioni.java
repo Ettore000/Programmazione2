@@ -15,10 +15,17 @@ public class StampaElencoTransazioni {
 		 * con Totale = totale costo della transazione
 		 */
 		
-		Azienda azienda=new Azienda();
+		//Crea la prima istanza e definisce la variabile
 		Transazione transazione = Transazione.read(Costante.TRANSAZIONE);
-		System.out.println(transazione);
-		for(Transazione t:azienda.getTransazioni().values())System.out.println(t);
+		
+		//Read Loop Pattern
+		//continua il read loop pattern finché non ci sono più dati nel File di ingresso
+		while (transazione!=null) {
+			transazione=Transazione.read(Costante.TRANSAZIONE);
+			System.out.println(transazione);
+		}
+		
+		//System.out.println(transazione);
 		System.out.println("***Scenario concluso con successo***");
 	}
 }
