@@ -25,6 +25,14 @@ public class Azienda {
 	 *	Buon lavoro
 	 *	Maria Tortorella
 	 */
+	
+	//TODO implementare le sottoclassi di Transazione
+	//TODO implementare i metodi necessari nella classe Libro
+	/*TODO Completare la classe Azienda
+	 *		Rappresentata da due collezioni, transazioni e libri
+	 */
+	//TODO cercare o filtrare oggetti ed eseguire altre operazioni
+	
 	public Azienda() {
 		this.transazioni=new HashMap<String, Transazione>();
 	}
