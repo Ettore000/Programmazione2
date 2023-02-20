@@ -8,17 +8,10 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class Transazione {
-	public Transazione(char tipo, int id, String data, String citta, String ip) {
-		this.tipo = tipo;
+	public Transazione(int id, String data) {
 		this.id = id;
 		this.data = data;
-		this.citta = citta;
-		this.ip = ip;
 		this.libri = new HashMap<String, Libro>();
-	}
-	
-	public char getTipo() {
-		return tipo;
 	}
 	public int getId() {
 		return id;
@@ -26,16 +19,10 @@ public class Transazione {
 	public String getData() {
 		return data;
 	}
-	public String getCitta() {
-		return citta;
-	}
-	public String getIp() {
-		return ip;
-	}
 	public Map<String, Libro> getLibri() {
 		return libri;
 	}
-	
+	ì
 	public void addLibri(String chiave, Libro libro) {
 		libri.put(chiave, libro);
 	}
@@ -130,7 +117,6 @@ public class Transazione {
 	}
 
 	private int id;
-	private String data, citta, ip;
-	private char tipo;
+	private String data;
 	private Map<String, Libro> libri;
 }
