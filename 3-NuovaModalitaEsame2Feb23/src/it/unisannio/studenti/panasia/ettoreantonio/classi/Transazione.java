@@ -22,25 +22,15 @@ public class Transazione {
 	public Map<String, Libro> getLibri() {
 		return libri;
 	}
-	ì
+	
 	public void addLibri(String chiave, Libro libro) {
 		libri.put(chiave, libro);
 	}
 	public static Transazione read(Scanner sc) throws IOException, InputMismatchException{
 		//si inizializzano tutti gli identificatori prima del blocco try
 		int id=0;
-		String data="", citta="", ip="";
-		char tipo='\0';
+		String data="";
 		try {
-			System.out.println("Tipo ('f' o 'o'): ");
-			//si utilizza charAt(0) per leggere solo il primo carattere dopo il puntatore dello Scanner
-			//dopodiché si va a capo
-			tipo=sc.next().charAt(0);sc.nextLine();
-			//si verifica la validità di tipo se non è nulla o ha valori diversi da 'f' e 'o'
-			if(tipo=='\0' || (tipo!='f' && tipo!='o')) {
-				return null;
-			}
-
 			System.out.println("ID: ");
 			//legge il tipo Int e va a capo
 			id=sc.nextInt();sc.nextLine();
@@ -50,46 +40,23 @@ public class Transazione {
 			System.out.println("Data (GGMMAAAA): ");
 			data=sc.nextLine();
 			if(data.equals(""))return null;
-
-			if(tipo=='f') {
-				System.out.println("Citta': ");
-				citta=sc.nextLine();
-				if(citta.equals(""))return null;
-			} else {
-				System.out.println("IP (xxx.xxx.xxx.xxx): ");
-				ip=sc.nextLine();
-				if(ip.equals(""))return null;
-			}
 		} catch (InputMismatchException e) {
 			//si avverte che qualcosa non è valido
 			System.err.println("Errore nella registrazione di una transazione");
 			//si usa throw perché ferma il programma invece di semplicemente stampare l'errore e continuare
 			throw e;
 		}
-		return new Transazione(tipo, id, data, citta, ip);
+		return new Transazione(id, data);
 	}
 
 	public static Transazione readFile(Scanner sc){
-		if(!sc.hasNext())return null;
-		char tipo=sc.next().charAt(0);
-
 		if(!sc.hasNextInt())return null;
 		int id=sc.nextInt();
 
 		if(!sc.hasNext())return null;
 		String data=sc.next();
-
-
-		String citta="", ip="";
-		if(tipo=='f') {
-			if(!sc.hasNext())return null;
-			citta=sc.next();
-		} else {
-			if(!sc.hasNext())return null;
-			ip=sc.next();
-		}
-
-		return new Transazione(tipo, id, data, citta, ip);
+		
+		return new Transazione(id, data);
 	}
 
 	public double costoTotale() {
@@ -100,7 +67,8 @@ public class Transazione {
 		return costoTotale;
 	}
 
-	public String toString() {
+	//TODO come organizzare questo?
+	/*public String toString() {
 		StringBuilder sb=new StringBuilder();
 
 		sb.append(tipo+" "+id+" "+data+" "+citta+ip+"\n");
@@ -108,13 +76,14 @@ public class Transazione {
 		sb.append("\n");
 
 		return sb.toString();
-	}
-
-	public void print(PrintStream nomeFile) {
+	}*/
+	
+	//TODO come organizzare questo?
+	/*public void print(PrintStream nomeFile) {
 		nomeFile.println("'"+tipo+"' "+id+" "+data+" "+citta+ip+"\n");
 		for(Libro libro:libri.values())nomeFile.println(libro.toString());
 		nomeFile.println("\n");
-	}
+	}*/
 
 	private int id;
 	private String data;
