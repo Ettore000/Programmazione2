@@ -7,7 +7,7 @@ import java.util.InputMismatchException;
 import java.util.Map;
 import java.util.Scanner;
 
-public class Transazione {
+public abstract class Transazione {
 	public Transazione(int id, String data) {
 		this.id = id;
 		this.data = data;

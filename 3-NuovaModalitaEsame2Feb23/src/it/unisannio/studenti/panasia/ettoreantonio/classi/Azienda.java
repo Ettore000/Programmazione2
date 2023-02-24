@@ -9,9 +9,11 @@ public class Azienda {
 	 *	il programma, che mi ha inviato nella sua email del 12, è incompleto.
 	 *	Solo il contenuto della classe Libro può essere considerato corretto,
 	 *	anche se non implementa tutti i metodi necessari.
+	 *
 	 *	La classe Transazione deve essere superclasse di due
-	 *	sottoclassi:TransazioneOnLine e TransazioneFisica. Quindi bisogna
+	 *	sottoclassi: TransazioneOnLine e TransazioneFisica. Quindi bisogna
 	 *	rivedere l’implementazione.
+	 *
 	 *	Infine, la classe Azienda dovrebbe modellare un’azienda che vende libri
 	 *	mediante transazioni fisiche e transazioni online, ovvero deve essere
 	 *	rappresentata da una collezione di transazioni e una di libri, entrambi
@@ -25,13 +27,6 @@ public class Azienda {
 	 *	Buon lavoro
 	 *	Maria Tortorella
 	 */
-	
-	//TODO implementare le sottoclassi di Transazione
-	//TODO implementare i metodi necessari nella classe Libro
-	/*TODO Completare la classe Azienda
-	 *		Rappresentata da due collezioni, transazioni e libri
-	 */
-	//TODO cercare o filtrare oggetti ed eseguire altre operazioni
 	
 	public Azienda() {
 		this.transazioni=new HashMap<String, Transazione>();
