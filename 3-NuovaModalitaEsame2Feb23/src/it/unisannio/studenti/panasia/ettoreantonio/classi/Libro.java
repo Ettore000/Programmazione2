@@ -57,6 +57,12 @@ public class Libro {
 		return new Libro(titolo, autore, prezzo);
 	}
 
+	/*
+	 * Viene inserito il metodo toString() anziché print() perché
+	 * abbiamo bisogno di una stringa che viene stampata direttamente da
+	 * TransazioneFisica e TransazioneOnline, cui metodo attraverso un foreach di un'HashMap
+	 * restiruisce la lista di libri compresi da una transazione
+	 */
 	public String toString() {
 		StringBuilder sb=new StringBuilder();
 
@@ -66,6 +72,11 @@ public class Libro {
 
 		return sb.toString();
 	}
+
+	/*
+	 * Viene omessa la stampa su File perché viene richiamato il metodo print di Libro
+	 * all'interno di TransazioneFisica e TransazioneOnline
+	 */
 
 	private String titolo, autore;
 	private double prezzo;

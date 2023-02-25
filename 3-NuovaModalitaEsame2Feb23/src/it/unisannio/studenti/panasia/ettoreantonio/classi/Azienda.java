@@ -27,7 +27,8 @@ public class Azienda {
 	 *	Buon lavoro
 	 *	Maria Tortorella
 	 */
-	
+
+	//TODO come risolvere il problema con l'inserimento dei double
 	public Azienda() {
 		this.transazioni=new HashMap<String, Transazione>();
 	}
