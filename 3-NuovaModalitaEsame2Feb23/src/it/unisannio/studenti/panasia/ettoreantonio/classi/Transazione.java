@@ -1,11 +1,7 @@
 package it.unisannio.studenti.panasia.ettoreantonio.classi;
 
-import java.io.IOException;
-import java.io.PrintStream;
 import java.util.HashMap;
-import java.util.InputMismatchException;
 import java.util.Map;
-import java.util.Scanner;
 
 public abstract class Transazione {
 	public Transazione(int id, String data) {
@@ -26,30 +22,8 @@ public abstract class Transazione {
 	public void addLibri(String chiave, Libro libro) {
 		libri.put(chiave, libro);
 	}
-	public static Transazione read(Scanner sc) throws IOException, InputMismatchException{
-		//si inizializzano tutti gli identificatori prima del blocco try
-		int id=0;
-		String data="";
-		try {
-			System.out.println("ID: ");
-			//legge il tipo Int e va a capo
-			id=sc.nextInt();sc.nextLine();
-			//non può esistere un prezzo negativo
-			if(id<0)return null;
 
-			System.out.println("Data (GGMMAAAA): ");
-			data=sc.nextLine();
-			if(data.equals(""))return null;
-		} catch (InputMismatchException e) {
-			//si avverte che qualcosa non è valido
-			System.err.println("Errore nella registrazione di una transazione");
-			//si usa throw perché ferma il programma invece di semplicemente stampare l'errore e continuare
-			throw e;
-		}
-		return new Transazione(id, data);
-	}
-
-	public static Transazione readFile(Scanner sc){
+	/*public static Transazione readFile(Scanner sc){
 		if(!sc.hasNextInt())return null;
 		int id=sc.nextInt();
 
@@ -57,15 +31,15 @@ public abstract class Transazione {
 		String data=sc.next();
 		
 		return new Transazione(id, data);
-	}
+	}*/
 
-	public double costoTotale() {
+	/*public double costoTotale() {
 		double costoTotale=0;
 
 		for(Libro libro: libri.values())costoTotale+=libro.getPrezzo();
 
 		return costoTotale;
-	}
+	}*/
 
 	//TODO come organizzare questo?
 	/*public String toString() {
