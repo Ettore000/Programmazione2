@@ -1,0 +1,10 @@
+Supponiamo di voler modellare una gerarchia di veicoli.
+
+Abbiamo il veicolo di base, che ha un nome, un modello e una velocità massima.
+
+Poi abbiamo diverse sottoclassi di veicoli, come auto, moto e biciclette,
+che ereditano tutte dal veicolo di base e hanno alcune proprietà aggiuntive.
+
+Ad esempio, l'auto ha un numero di porte e il tipo di alimentazione,
+la moto ha il numero di ruote e il tipo di motore,
+la bicicletta ha il numero di marce e il tipo di freni.
