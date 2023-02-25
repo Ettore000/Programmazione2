@@ -31,15 +31,25 @@ public class Azienda {
 	//TODO come risolvere il problema con l'inserimento dei double
 	public Azienda() {
 		this.transazioni=new HashMap<String, Transazione>();
+		this.libri=new HashMap<String, Libro>();
 	}
 
 	public Map<String, Transazione> getTransazioni() {
 		return transazioni;
 	}
+	
+	public Map<String, Libro> getLibri() {
+		return libri;
+	}
 
 	public void addTransazioni(String id, Transazione transazione) {
 		transazioni.put(id, transazione);
 	}
+	
+	public void addLibri(String id, Libro libro) {
+		libri.put(id, libro);
+	}
 
 	private Map<String, Transazione> transazioni;
+	private Map<String, Libro> libri;
 }
