@@ -17,7 +17,7 @@ public class Bicicletta extends Veicolo {
 	public void print() {
 		System.out.println("Nome: "+getNome());
 		System.out.println("Modello: "+getModello());
-		System.out.println("Velocita' massima: "+getVelocitaMassima());
+		System.out.println("Velocita' massima: "+getVelocitaMassima()+"km/h");
 		System.out.println("Numero marce: "+numeroMarce);
 		System.out.println("Tipo freni: "+tipoFreni);
 	}
