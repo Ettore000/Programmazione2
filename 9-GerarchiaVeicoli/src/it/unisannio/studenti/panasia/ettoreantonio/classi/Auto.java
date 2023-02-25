@@ -17,7 +17,7 @@ public class Auto extends Veicolo {
 	public void print() {
 		System.out.println("Nome: "+getNome());
 		System.out.println("Modello: "+getModello());
-		System.out.println("Velocità massima: "+getVelocitaMassima());
+		System.out.println("Velocita' massima: "+getVelocitaMassima());
 		System.out.println("Numero porte: "+numeroPorte);
 		System.out.println("Tipo alimentazione: "+tipoAlimentazione);
 	}
