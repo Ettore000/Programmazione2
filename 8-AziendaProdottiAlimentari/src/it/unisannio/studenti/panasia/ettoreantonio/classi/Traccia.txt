@@ -1,0 +1,3 @@
+Supponiamo di dover creare un programma che gestisce un'azienda che produce prodotti alimentari.
+In particolare, l'azienda produce diversi tipi di prodotti, come ad esempio pane, pasta, dolci, ecc.
+Ogni prodotto ha un nome e un prezzo.

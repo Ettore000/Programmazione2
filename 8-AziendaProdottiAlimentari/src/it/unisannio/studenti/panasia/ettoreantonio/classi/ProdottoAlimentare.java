@@ -1,7 +1,7 @@
 package it.unisannio.studenti.panasia.ettoreantonio.classi;
 
-public abstract class ProdottiAlimentari {
-	public ProdottiAlimentari(String nome, double prezzo) {
+public abstract class ProdottoAlimentare {
+	public ProdottoAlimentare(String nome, double prezzo) {
 		this.nome=nome;
 		this.prezzo=prezzo;
 	}
