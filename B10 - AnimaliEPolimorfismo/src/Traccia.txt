@@ -1,0 +1,9 @@
+Supponiamo di avere una classe Animal che ha un metodo makeSound() che restituisce una stringa
+che rappresenta il suono dell'animale.
+
+Vogliamo creare delle sottoclassi di Animal per rappresentare diversi tipi di animali,
+come Dog, Cat, Cow, Sheep, ognuno dei quali ha una sua implementazione del metodo makeSound().
+
+
+Inoltre, vogliamo creare una classe AnimalTest che ha un metodo printAnimalSound() che prende
+in input un oggetto Animal e stampa il suono dell'animale.
