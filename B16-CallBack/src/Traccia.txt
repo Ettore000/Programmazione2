@@ -1,0 +1,9 @@
+Supponiamo di avere una classe Calculator che ha un metodo operate che prende due numeri
+e un oggetto Operation che descrive l'operazione da eseguire sui numeri.
+
+L'oggetto Operation ha un metodo perform che prende i due numeri come argomenti e restituisce
+il risultato dell'operazione.
+
+Il compito dell'esercizio è implementare diverse operazioni matematiche come
+oggetti Operation e passarli al metodo operate del Calculator come
+callback per eseguire l'operazione corretta.
