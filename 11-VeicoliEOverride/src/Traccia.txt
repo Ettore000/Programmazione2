@@ -1,0 +1,4 @@
+Supponiamo di avere una classe Veicolo che ha un metodo accelera() che incrementa la velocità del veicolo.
+
+Vogliamo creare una classe Auto che erediti dalla classe Veicolo,
+ma che abbia una versione diversa del metodo accelera() che accelera di più rispetto al veicolo generico.
