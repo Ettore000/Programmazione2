@@ -1,0 +1,4 @@
+Supponiamo di avere un'ArrayList di interi e vogliamo creare un nuovo ArrayList
+che contenga solo i numeri pari dell'ArrayList originale, nell'ordine in cui appaiono.
+
+Scrivi un programma Java che realizzi questa operazione.
