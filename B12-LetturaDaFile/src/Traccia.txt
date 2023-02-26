@@ -1,0 +1,2 @@
+Supponiamo di avere un file di testo chiamato "veicoli.txt" che contiene le informazioni sui veicoli.
+
