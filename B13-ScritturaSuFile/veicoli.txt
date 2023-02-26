@@ -1,0 +1,12 @@
+Marca: Ford
+Modello: Mustang
+Anno: 2020
+Prezzo: 30000.0
+Marca: Toyota
+Modello: Corolla
+Anno: 2018
+Prezzo: 18000.0
+Marca: Honda
+Modello: Civic
+Anno: 2019
+Prezzo: 20000.0
