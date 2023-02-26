@@ -48,7 +48,10 @@ public class Veicolo {
 			cilindrata = Integer.parseInt(dati[3]);
 			numeroRuote = Integer.parseInt(dati[4]);
 		} catch (InputMismatchException e) {
-			System.err.println("Errore nella lettura del File");
+			//Avverte che qualcosa non va prima dell'interruzione del programma
+			System.err.println("Errore in fase di creazione dell'istanza di Veicolo");
+			//Interrompe l'esecuzione e stampa l'errore
+			throw e;
 		}
 
 		return new Veicolo(tipo, marca, modello, cilindrata, numeroRuote);
