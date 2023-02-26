@@ -1,2 +1,8 @@
 Supponiamo di avere un file di testo chiamato "veicoli.txt" che contiene le informazioni sui veicoli.
 
+Il file elenca tre veicoli con le seguenti informazioni:
+tipo di veicolo, marca, modello, cilindrata e numero di ruote.
+
+L'obiettivo dell'esercizio è quello di leggere le informazioni dal file e
+creare oggetti di classe Veicolo che rappresentano i veicoli,
+quindi stampare le informazioni sui veicoli a console.

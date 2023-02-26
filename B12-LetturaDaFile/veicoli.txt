@@ -1,0 +1,3 @@
+auto,fiat,punto,1200,4
+moto,honda,cbr,600,2
+camion,iveco,eurocargo,5000,6
