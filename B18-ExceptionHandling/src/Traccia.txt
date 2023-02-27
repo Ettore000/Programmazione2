@@ -1,0 +1,8 @@
+Supponiamo di dover scrivere un programma Java che legga un numero intero da tastiera
+e ne calcoli il cubo.
+
+Tuttavia, se l'utente inserisce una stringa anziché un numero intero,
+il programma deve gestire l'eccezione e stampare un messaggio di errore.
+
+Inoltre, se il numero inserito è negativo, il programma deve sollevare
+un'eccezione personalizzata di tipo NegativeNumberException.
