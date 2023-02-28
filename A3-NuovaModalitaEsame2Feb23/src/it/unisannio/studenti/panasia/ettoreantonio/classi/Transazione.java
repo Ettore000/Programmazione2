@@ -3,7 +3,7 @@ package it.unisannio.studenti.panasia.ettoreantonio.classi;
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class Transazione {
+public class Transazione {
 	public Transazione(int id, String data) {
 		this.id = id;
 		this.data = data;

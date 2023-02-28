@@ -5,8 +5,9 @@ import java.util.Scanner;
 
 import it.unisannio.studenti.panasia.ettoreantonio.classi.Libro;
 import it.unisannio.studenti.panasia.ettoreantonio.classi.Transazione;
+import it.unisannio.studenti.panasia.ettoreantonio.classi.TransazioneFisica;
 
-public class CreaNuovaTransazione {
+public class CreaTransazioneFisica {
 
 	public static void main(String[] args) throws IOException {
 		//Definisce una nuova transazione
@@ -14,9 +15,8 @@ public class CreaNuovaTransazione {
 		//Creazione istanze
 		//Scanner viene istanziato qui perché così può essere chiuso come ultima operazione direttamente in questa classe, prima della terminazione del programma
 		Scanner sc=new Scanner(System.in);
-		Transazione transazione=Transazione.read(sc);
+		Transazione transazione=TransazioneFisica.read(sc);
 		Libro libro=Libro.read(sc);
-		
 		
 		//Memorizza l'istanza
 		transazione.addLibri(libro.getTitolo(), libro);
