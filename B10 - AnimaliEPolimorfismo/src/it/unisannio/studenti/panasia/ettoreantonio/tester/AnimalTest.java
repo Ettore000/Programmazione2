@@ -26,5 +26,5 @@ public class AnimalTest {
 		test.printAnimalSound(cow); //Moo
 		test.printAnimalSound(sheep); //Baa
 	}
-
+	
 }
