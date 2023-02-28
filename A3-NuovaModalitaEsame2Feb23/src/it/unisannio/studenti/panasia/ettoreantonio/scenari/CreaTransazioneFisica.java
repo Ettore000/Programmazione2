@@ -22,7 +22,8 @@ public class CreaTransazioneFisica {
 		transazione.addLibri(libro.getTitolo(), libro);
 		
 		//Stampa l'istanza
-		System.out.println(transazione.toString());
+		System.out.println("Istanza inserita: ");
+		transazione.print();
 		
 		//Chiusura dello Scanner
 		sc.close();

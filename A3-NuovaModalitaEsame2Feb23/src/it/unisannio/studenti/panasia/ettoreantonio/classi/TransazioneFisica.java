@@ -53,10 +53,14 @@ public class TransazioneFisica extends Transazione {
 
 		return new TransazioneFisica(id, data, citta);
 	}
-
+	
+	/*
+	 * Fa un override del metodo della superclasse
+	 * e stampa solo una transazione fisica
+	 */
 	public void print() {
 		System.out.println("'f' "+getId()+" "+getData()+" "+citta);
-		for(Libro libro:getLibri().values())System.out.println(libro.toString());
+		for(Libro libro:getLibri().values())System.out.println(libro.toString()); //TODO tramite keyset
 	}
 
 	public void printFile(PrintStream nomeFile) {
