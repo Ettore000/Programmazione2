@@ -1,0 +1,3 @@
+Supponiamo di dover scrivere un programma che prenda in input una lista
+di numeri interi e restituisca la lista senza duplicati,
+utilizzando una HashSet per rimuovere i duplicati.

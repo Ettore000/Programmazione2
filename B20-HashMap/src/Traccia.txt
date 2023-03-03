@@ -1,0 +1,3 @@
+Supponiamo di avere un elenco di studenti con i loro voti in un corso di matematica.
+Vogliamo creare una mappa che associ ogni studente al suo voto, dove il nome dello
+studente è una stringa e il voto è un intero.
