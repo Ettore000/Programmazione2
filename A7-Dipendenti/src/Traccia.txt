@@ -1,0 +1,4 @@
+Supponiamo di avere una classe Employee che rappresenta un dipendente.
+Ogni dipendente ha un nome, un salario orario e un numero di ore lavorate.
+Dobbiamo creare un programma che calcoli il pagamento di ogni dipendente
+in base alle ore lavorate e al salario orario.
