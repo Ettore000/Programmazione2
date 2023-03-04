@@ -1,0 +1,14 @@
+Si supponga di avere una classe Libro che contiene le seguenti informazioni:
+
+    titolo: il titolo del libro;
+    autore: il nome dell'autore del libro;
+    annoPubblicazione: l'anno di pubblicazione del libro.
+
+Si vuole creare una classe Libreria che rappresenta una collezione di libri.
+
+La classe Libreria deve avere le seguenti funzionalità:
+
+    aggiungiLibro(Libro libro): aggiunge un libro alla libreria;
+    rimuoviLibro(String titolo): rimuove il libro con il titolo specificato dalla libreria;
+    cercaLibro(String titolo): restituisce il libro con il titolo specificato, se presente nella libreria;
+    stampaLibri(): stampa tutti i libri presenti nella libreria.
