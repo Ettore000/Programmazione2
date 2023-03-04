@@ -41,6 +41,7 @@ public class VeicoloTest {
 		}
 		double pedaggio=veicolo.calcolaPedaggio(distanza);
 		System.out.println("Il pedaggio per il veicolo: "+veicolo.getTipoVeicolo()+" che ha percorso "+distanza+"km e' di euro "+pedaggio);
+		sc.close();
 	}
 
 }
