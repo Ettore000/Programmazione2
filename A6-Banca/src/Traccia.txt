@@ -1,0 +1,22 @@
+Si vuole creare una classe "Account" che rappresenti un conto bancario.
+Ogni conto bancario ha un numero di conto (account number), un saldo (balance) e
+un tasso di interesse (interest rate).
+
+La classe deve avere i seguenti metodi:
+
+    Un costruttore che prende in input il numero di conto,il saldo iniziale e il tasso di interesse.
+    Il saldo iniziale deve essere maggiore o uguale a zero.
+
+    Un metodo "deposit" che prende in input una quantità di denaro e aggiunge questa quantità al saldo del conto.
+
+    Un metodo "withdraw" che prende in input una quantità di denaro e la sottrae dal saldo del conto.
+    Se il saldo diventa negativo, il metodo deve restituire un valore booleano "false"
+    per indicare che il prelievo non è stato effettuato.
+
+    Un metodo "addInterest" che aggiunge gli interessi maturati al saldo del conto.
+
+    Un metodo "getBalance" che restituisce il saldo del conto.
+
+    Un metodo "getAccountNumber" che restituisce il numero di conto.
+
+    Un metodo "toString" che restituisce una stringa rappresentativa dell'oggetto "Account".
