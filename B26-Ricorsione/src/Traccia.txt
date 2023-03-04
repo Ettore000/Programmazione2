@@ -1,0 +1,5 @@
+Supponiamo di avere una classe Studente che contiene il nome dello studente,
+il numero di matricola e una lista di esami con i relativi voti.
+
+Vogliamo scrivere un metodo ricorsivo che restituisca
+la media dei voti di tutti gli esami dello studente.
