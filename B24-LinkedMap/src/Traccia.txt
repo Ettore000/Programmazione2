@@ -1,0 +1,9 @@
+Supponiamo di avere una classe Studente con i seguenti attributi:
+
+    nome (String)
+    cognome (String)
+    media (double)
+
+Creiamo una LinkedHashMap che associ i nomi degli studenti alle loro istanze.
+Successivamente, aggiungiamo alcuni studenti alla mappa, quindi stampiamo i
+loro nomi e medie in ordine di inserimento.

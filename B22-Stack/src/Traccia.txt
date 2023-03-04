@@ -1,0 +1,4 @@
+Supponiamo di avere una classe Stack che implementa uno stack di interi.
+Dobbiamo creare un metodo che prenda come parametro uno stack di interi
+e restituisca un altro stack di interi, contenente gli stessi elementi dello stack
+di partenza, ma in ordine inverso.

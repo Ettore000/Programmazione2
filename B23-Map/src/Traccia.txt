@@ -1,0 +1,3 @@
+Supponiamo di avere un elenco di studenti e le loro votazioni in un corso.
+Dobbiamo scrivere un programma Java che utilizzi una mappa per archiviare
+le informazioni degli studenti e poi calcoli la media delle loro votazioni.
