@@ -1,0 +1,31 @@
+Si consideri una compagnia telefonica che offre diversi piani tariffari ai suoi clienti, ciascuno con
+caratteristiche e prezzi diversi. Si vuole creare un programma in Java per gestire le informazioni
+sui clienti e sui loro piani tariffari.
+
+    Definire la classe "PianoTariffario" con i seguenti attributi:
+
+    "nome": il nome del piano tariffario (es. "Base", "Premium", "Plus")
+    "prezzoMensile": il costo mensile del piano tariffario in euro
+    "minutiInclusi": il numero di minuti inclusi nel piano tariffario ogni mese
+    "smsInclusi": il numero di SMS inclusi nel piano tariffario ogni mese
+    "gigaInclusi": il numero di giga di dati inclusi nel piano tariffario ogni mese
+
+    Definire la classe "Cliente" con i seguenti attributi:
+
+    "nome": il nome del cliente
+    "cognome": il cognome del cliente
+    "pianoTariffario": il piano tariffario scelto dal cliente
+
+    Definire la classe "CompagniaTelefonica" con i seguenti attributi:
+
+    "pianiTariffari": un array di oggetti "PianoTariffario" che rappresenta i piani tariffari disponibili
+    "clienti": un array di oggetti "Cliente" che rappresenta i clienti registrati presso la compagnia telefonica
+
+    Definire il metodo "aggiungiCliente" nella classe "CompagniaTelefonica" che permette di aggiungere
+    un nuovo cliente al sistema. Il metodo deve prendere in input il nome, il cognome e il piano
+    tariffario scelto dal cliente e aggiungere un nuovo oggetto "Cliente" all'array "clienti".
+
+    Definire il metodo "calcolaCostoMensile" nella classe "Cliente" che calcola il costo mensile del piano
+    tariffario scelto dal cliente in base al numero di minuti, SMS e giga di dati utilizzati nel mese corrente.
+    Il metodo deve prendere in input il numero di minuti, SMS e giga di dati utilizzati
+    e restituire il costo mensile totale.
