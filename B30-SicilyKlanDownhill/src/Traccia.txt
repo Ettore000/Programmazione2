@@ -1,0 +1,6 @@
+Gestisce un'associazione sportiva dilettantistica chiamata SicilyKlanDownhill che ha un furgone con 8 posti
+e 8 persone che hanno una downhill; Il gruppo esce la domenica mattina e fanno 10 giri,
+salendo in cima alla montagna con il furgone e scendendo con la downhill tramite uno dei 7 percorsi
+esistenti; a turno una persona deve fare da autista; ogni domenica le persone devono pagare
+10 euro a testa e il furgone consuma 30 euro di benzina; se una downhill fora una gomma
+necessita di essere riparata.
