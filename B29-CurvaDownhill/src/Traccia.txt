@@ -1,0 +1,5 @@
+Supponiamo di avere una classe "DownhillCurve" che rappresenta una curva in una pista di downhill.
+
+La classe ha un attributo "raggio" che rappresenta il raggio della curva e un metodo "attraversa"
+che prende in input la velocità della discesa e restituisce la velocità massima che può essere mantenuta
+durante la curva senza perdere il controllo.
