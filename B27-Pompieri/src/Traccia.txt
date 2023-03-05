@@ -1,0 +1,10 @@
+Supponiamo di dover creare una classe Java che rappresenta un'auto dei pompieri.
+L'auto ha un serbatoio d'acqua, un motore e una pompa idraulica che permette di spruzzare acqua
+per spegnere gli incendi.
+
+    Definire la classe Pompiere che ha i seguenti attributi:
+
+    nome
+    cognome
+    età
+    anni di esperienza
