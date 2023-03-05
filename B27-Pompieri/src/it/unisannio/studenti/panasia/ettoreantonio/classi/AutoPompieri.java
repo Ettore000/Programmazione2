@@ -62,13 +62,32 @@ public class AutoPompieri {
 	}
 	
 	public void aggiungiPompiere(Pompiere pompiere) {
-		//Controllo se c'è spazio nell'equipaggio
+		//Controlla se c'è spazio
 		boolean trovato=false;
 		for (int i = 0; i < pompieri.length; i++) {
 			if(pompieri[i]==null) {
-				
+				pompieri[i]=pompiere;
+				trovato=true;
+				break;
 			}
 		}
+		if(trovato)System.out.println("Pompiere "+pompiere.getNome()+" "+pompiere.getCognome()+" aggiunto all'equipaggio.");
+		else System.out.println("Equipaggio pieno!");
+	}
+	
+	public void rimuoviPompiere(Pompiere pompiere) {
+		//Cerca il pompiere nell'equipaggio
+		boolean trovato=false;
+		
+		for (int i = 0; i < pompieri.length; i++) {
+			if(pompieri[i]== pompiere) {
+				pompieri[i]=null;
+				trovato=true;
+				break;
+			}
+		}
+		if(trovato)System.out.println("Pompiere "+pompiere.getNome()+" "+pompiere.getCognome()+" rimosso dall'equipaggio.");
+		else System.out.println("Pompiere non trovato nell'equipaggio!");
 	}
 	
 	private String marca, modello;
