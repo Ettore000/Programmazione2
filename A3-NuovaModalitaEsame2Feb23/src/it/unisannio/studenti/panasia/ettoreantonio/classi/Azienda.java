@@ -78,6 +78,35 @@ public class Azienda {
 	    }
 	    return risultato;
 	}
+	
+	//Rimozione
+	public void rimuoviTransazione(int id) {
+        Transazione transazione = cercaTransazione(id);
+        if (transazione != null) {
+            transazioni.remove(transazione.getId());
+        }
+    }
+	
+	//TODO Totale
+	/*public double totaleVenditeOnline() {
+        double result = 0;
+        for (Transazione transazioni : transazioni.values()) {
+            if (transazioni.getTipo().equalsIgnoreCase("online")) {
+                result += transazioni.getImporto();
+            }
+        }
+        return result;
+    }
+	
+	public double totaleVenditeFisiche() {
+	    double result = 0;
+	    for (Transazione t : transazioni) {
+	        if (t.getTipo().equalsIgnoreCase("fisica")) {
+	            result += t.getImporto();
+	        }
+	    }
+	    return result;
+	}*/
 
 	private Map<Integer, Transazione> transazioni;
 	private Map<String, Libro> libri;
