@@ -34,7 +34,8 @@ public class Libro {
 			if(autore.equals(""))return null;
 
 			System.out.println("Prezzo: ");
-			//TODO come posso risolvere per il problema dell'eccezione se inserisco il numero con il punto anziché con la virgola?
+			/*TODO come posso risolvere per il problema dell'eccezione se
+			inserisco il numero con il punto anziché con la virgola?*/
 			prezzo=sc.nextDouble();sc.nextLine();
 			if(prezzo<0)return null;
 		} catch (InputMismatchException e) {

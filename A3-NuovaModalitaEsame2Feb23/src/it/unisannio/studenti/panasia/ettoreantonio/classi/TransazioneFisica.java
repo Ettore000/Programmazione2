@@ -58,14 +58,15 @@ public class TransazioneFisica extends Transazione {
 	 * Fa un override del metodo della superclasse
 	 * e stampa solo una transazione fisica
 	 */
+	@Override
 	public void print() {
 		System.out.println("'f' "+getId()+" "+getData()+" "+citta);
-		for(Libro libro:getLibri().values())System.out.println(libro.toString()); //TODO tramite keyset
+		for(String libro:getLibri().keySet())System.out.println(libro.toString());
 	}
 
 	public void printFile(PrintStream nomeFile) {
 		nomeFile.println("'f' "+getId()+" "+getData()+" "+citta+"\n");
-		for(Libro libro:getLibri().values())nomeFile.println(libro.toString());
+		for(String libro:getLibri().keySet())nomeFile.println(libro.toString());
 		nomeFile.println("\n");
 	}
 

@@ -53,15 +53,16 @@ public class TransazioneOnline extends Transazione {
 
 		return new TransazioneOnline(id, data, ip);
 	}
-
+	
+	@Override
 	public void print() {
-		System.out.println("'f' "+getId()+" "+getData()+" "+ip);
-		for(Libro libro:getLibri().values())System.out.println(libro.toString());
+		System.out.println("'o' "+getId()+" "+getData()+" "+ip);
+		for(String libro:getLibri().keySet())System.out.println(libro.toString());
 	}
 
 	public void printFile(PrintStream nomeFile) {
-		nomeFile.println("'f' "+getId()+" "+getData()+" "+ip+"\n");
-		for(Libro libro:getLibri().values())nomeFile.println(libro.toString());
+		nomeFile.println("'o' "+getId()+" "+getData()+" "+ip+"\n");
+		for(String libro:getLibri().keySet())nomeFile.println(libro.toString());
 		nomeFile.println("\n");
 	}
 
