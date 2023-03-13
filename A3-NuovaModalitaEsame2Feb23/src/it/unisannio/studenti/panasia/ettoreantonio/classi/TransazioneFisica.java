@@ -53,7 +53,7 @@ public class TransazioneFisica extends Transazione {
 	@Override
 	public double costoTotale() {
 		double costoTotale=0;
-		for(Libro libro: libri.values())costoTotale+=libro.getPrezzo();
+		for(Libro libro: libri.values())costoTotale+=libro.getPrezzo(); //Ho voluto utilizzare values() perché si tratta di una lista di pochi libri ogni ordine in generale
 		return costoTotale;
 	}
 
