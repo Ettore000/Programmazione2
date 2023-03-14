@@ -22,14 +22,12 @@ public class Libro {
 	}
 
 	public static Libro read(Scanner sc) throws IOException, InputMismatchException{
-		String titolo="", autore="";
+		String titolo="", autore="", input="";
 		double prezzo=0;
 		try {
 			System.out.print("Titolo: ");titolo=sc.nextLine();if(titolo.equals(""))return null;
 			System.out.print("Autore: ");autore=sc.nextLine();if(autore.equals(""))return null;
-			System.out.print("Prezzo: ");prezzo=sc.nextDouble();sc.nextLine();if(prezzo<0)return null;
-			/*TODO come posso risolvere per il problema dell'eccezione se
-			inserisco il numero con il punto anziché con la virgola?*/
+			System.out.print("Prezzo: ");input=sc.nextLine();prezzo=Double.parseDouble(input);if(prezzo<0)return null;
 		} catch (InputMismatchException e) {
 			System.err.println("***Errore nella registrazione di un libro***");
 			throw e;
@@ -50,6 +48,7 @@ public class Libro {
 	 * TransazioneFisica e TransazioneOnline, cui metodo attraverso un foreach di un'HashMap
 	 * restiruisce la lista di libri compresi da una transazione
 	 */
+	@Override
 	public String toString() {
 		StringBuilder sb=new StringBuilder();
 

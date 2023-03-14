@@ -43,7 +43,6 @@ public class TransazioneOnline extends Transazione {
 	@Override
 	public void addLibri(Libro libro){libri.put(libro.getTitolo(), libro);}
 
-	//TODO calola il costo totale di una transazione Online
 	@Override
 	public double costoTotale() {
 		double costoTotale=0;
@@ -56,14 +55,15 @@ public class TransazioneOnline extends Transazione {
 	@Override
 	public void print() {
 		System.out.println("'o' "+getId()+" "+getData()+" "+ip);
-		for(String libro:getLibri().keySet())System.out.println(libro.toString());
+		for(Libro libro:getLibri().values())System.out.println(libro);
+		System.out.println();
 	}
 
 	@Override
 	public void printFile(PrintStream nomeFile) {
 		nomeFile.println("'o' "+getId()+" "+getData()+" "+ip+"\n");
-		for(String libro:getLibri().keySet())nomeFile.println(libro.toString());
-		nomeFile.println("\n");
+		for(Libro libro:getLibri().values())nomeFile.println(libro);
+		nomeFile.println();
 	}
 
 	private String ip;
