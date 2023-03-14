@@ -25,19 +25,11 @@ public class Libro {
 		String titolo="", autore="";
 		double prezzo=0;
 		try {
-			System.out.println("Titolo: ");
-			titolo=sc.nextLine();
-			if(titolo.equals(""))return null;
-
-			System.out.println("Autore: ");
-			autore=sc.nextLine();
-			if(autore.equals(""))return null;
-
-			System.out.println("Prezzo: ");
+			System.out.print("Titolo: ");titolo=sc.nextLine();if(titolo.equals(""))return null;
+			System.out.print("Autore: ");autore=sc.nextLine();if(autore.equals(""))return null;
+			System.out.print("Prezzo: ");prezzo=sc.nextDouble();sc.nextLine();if(prezzo<0)return null;
 			/*TODO come posso risolvere per il problema dell'eccezione se
 			inserisco il numero con il punto anziché con la virgola?*/
-			prezzo=sc.nextDouble();sc.nextLine();
-			if(prezzo<0)return null;
 		} catch (InputMismatchException e) {
 			System.err.println("***Errore nella registrazione di un libro***");
 			throw e;
@@ -46,15 +38,9 @@ public class Libro {
 	}
 
 	public static Libro readFile(Scanner sc) {
-		if(!sc.hasNextLine())return null;
-		String titolo=sc.nextLine();
-
-		if(!sc.hasNextLine())return null;
-		String autore=sc.nextLine();
-
-		if(!sc.hasNextDouble())return null;
-		double prezzo=sc.nextDouble();
-
+		if(!sc.hasNextLine())return null;String titolo=sc.nextLine();
+		if(!sc.hasNextLine())return null;String autore=sc.nextLine();
+		if(!sc.hasNextDouble())return null;double prezzo=sc.nextDouble();sc.nextLine();
 		return new Libro(titolo, autore, prezzo);
 	}
 

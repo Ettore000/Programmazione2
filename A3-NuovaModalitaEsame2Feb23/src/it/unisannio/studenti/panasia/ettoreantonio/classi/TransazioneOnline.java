@@ -20,9 +20,9 @@ public class TransazioneOnline extends Transazione {
 		int id=0;
 		String data="", ip="";
 		try {
-			System.out.println("ID: ");id=sc.nextInt();sc.nextLine();if(id<0)return null;
-			System.out.println("Data (GGMMAAAA): ");data=sc.nextLine();if(data.equals(""))return null;
-			System.out.println("IP (xxx.xxx.xxx.xxx): ");ip=sc.nextLine();if(ip.equals(""))return null;
+			System.out.print("ID: ");id=sc.nextInt();sc.nextLine();if(id<0)return null;
+			System.out.print("Data (GGMMAAAA): ");data=sc.nextLine();if(data.equals(""))return null;
+			System.out.print("IP (xxx.xxx.xxx.xxx): ");ip=sc.nextLine();if(ip.equals(""))return null;
 		} catch (InputMismatchException e) {
 			System.err.println("Errore nella registrazione di una transazione online");
 			throw e;
