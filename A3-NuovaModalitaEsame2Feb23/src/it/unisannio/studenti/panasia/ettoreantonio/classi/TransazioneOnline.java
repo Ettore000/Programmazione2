@@ -41,7 +41,7 @@ public class TransazioneOnline extends Transazione {
             System.err.println("Errore: la data inserita non è nel formato corretto.");
 			e.printStackTrace();
 			return null; //in questo modo se si verifica questa eccezione il programma non inserisce la nuova istanza
-		}
+		} catch () {
 		return new TransazioneOnline(id, data, ip);
 	}
 
