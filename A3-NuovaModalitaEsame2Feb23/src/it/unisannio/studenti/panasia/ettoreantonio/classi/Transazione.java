@@ -36,9 +36,9 @@ public abstract class Transazione {
 
 	public abstract void print();
 
-	public abstract void printFile(PrintStream ps);
+	public abstract void print(PrintStream ps);
 
 	private int id;
-	private Date data;
+	private Date data=new Date();
 	private Set<Libro> libri;
 }

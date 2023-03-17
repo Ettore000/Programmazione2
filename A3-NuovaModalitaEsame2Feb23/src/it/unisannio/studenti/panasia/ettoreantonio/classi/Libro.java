@@ -1,6 +1,5 @@
 package it.unisannio.studenti.panasia.ettoreantonio.classi;
 
-import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 

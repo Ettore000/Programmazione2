@@ -1,27 +1,28 @@
 package it.unisannio.studenti.panasia.ettoreantonio.classi;
 
-import java.io.IOException;
 import java.io.PrintStream;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.InputMismatchException;
-import java.util.Map;
 import java.util.Scanner;
 
 public class TransazioneFisica extends Transazione {
 	public TransazioneFisica(int id, Date data, String citta) {
 		super(id, data);
 		this.citta=citta;
-		this.libri=new HashMap<String, Libro>();
 	}
 
 	public String getCitta(){
 		return citta;
 	}
 
-	public static TransazioneFisica read(Scanner sc) {
+	public static TransazioneFisica read() {
+		Scanner sc=new Scanner(System.in);
+
 		int id=0;
-		String data="", citta="";
+		SimpleDateFormat sdf=new SimpleDateFormat("ddMMyyyy");
+		Date data=null;
+		String citta="", input="";
 		try {
 			System.out.print("ID: ");
 			//legge il tipo Int e va a capo
@@ -29,51 +30,56 @@ public class TransazioneFisica extends Transazione {
 			//non può esistere un ID negativo
 			if(id<0)return null;
 
-			System.out.print("Data (GGMMAAAA): ");data=sc.nextLine();if(data.equals(""))return null;
-			System.out.print("Citta': ");citta=sc.nextLine();if(citta.equals(""))return null;
-		} catch (InputMismatchException e) {
+			System.out.print("Data (GGMMAAAA): ");
+			input=sc.nextLine();
+			data=sdf.parse(input);
+			if(data==null)return null;
+
+			System.out.print("Citta': ");
+			citta=sc.nextLine();
+			if(citta.equals(""))return null;
+		} catch (ParseException e) {
 			//TODO aggiusta tutte le gestioni delle exception
 			System.err.println("Errore nella registrazione di una transazione fisica");
+			e.printStackTrace();
 		}
 		return new TransazioneFisica(id, data, citta);
 	}
 
-	public static TransazioneFisica readFile(Scanner sc){
-		if(!sc.hasNextInt())return null;int id=sc.nextInt();
-		if(!sc.hasNext())return null;String data=sc.next();
-		if(!sc.hasNext())return null;String citta=sc.next();
+	public static TransazioneFisica read(Scanner sc){
+		if(!sc.hasNextInt())return null;
+		int id=sc.nextInt();
+
+		if(!sc.hasNext())return null;
+		String input=sc.next();
+		SimpleDateFormat sdf=new SimpleDateFormat("ddMMyyyy");
+		Date data=null;
+		try {
+			data = sdf.parse(input);
+		} catch (ParseException e) {
+			// TODO
+			e.printStackTrace();
+		}
+
+		if(!sc.hasNext())return null;
+		String citta=sc.next();
+
 		return new TransazioneFisica(id, data, citta);
-	}
-
-	@Override
-	public Map<String, Libro> getLibri(){return libri;}
-
-	@Override
-	public void addLibri(Libro libro){libri.put(libro.getTitolo(), libro);}
-
-	@Override
-	public double costoTotale() {
-		double costoTotale=0;
-		for(Libro libro: libri.values())costoTotale+=libro.getPrezzo(); //Ho voluto utilizzare values() perché si tratta di una lista di pochi libri ogni ordine in generale
-		return costoTotale;
 	}
 
 	@Override
 	public void print() {
 		System.out.println("'f' "+getId()+" "+getData()+" "+citta);
-		for(Libro libro:getLibri().values())System.out.println(libro);
+		for(Libro libro:getLibri())System.out.println(libro);
 		System.out.println();
 	}
 
-	//TODO print
-	//TODO nome file è un oggetto
 	@Override
-	public void printFile(PrintStream nomeFile) {
-		nomeFile.println("'f' "+getId()+" "+getData()+" "+citta+"\n");
-		for(Libro libro:getLibri().values())nomeFile.println(libro);
-		nomeFile.println();
+	public void print(PrintStream ps) {
+		ps.println("'f' "+getId()+" "+getData()+" "+citta+"\n");
+		for(Libro libro:getLibri())ps.println(libro);
+		ps.println();
 	}
 
 	private String citta;
-	private Map<String, Libro> libri;
 }
