@@ -2,21 +2,24 @@ package it.unisannio.studenti.panasia.ettoreantonio.classi;
 
 import java.io.IOException;
 import java.io.PrintStream;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.util.Map;
 import java.util.Scanner;
 
 public class TransazioneFisica extends Transazione {
-	public TransazioneFisica(int id, String data, String citta) {
+	public TransazioneFisica(int id, Date data, String citta) {
 		super(id, data);
 		this.citta=citta;
 		this.libri=new HashMap<String, Libro>();
 	}
 
-	public String getCitta(){return citta;}
+	public String getCitta(){
+		return citta;
+	}
 
-	public static TransazioneFisica read(Scanner sc) throws IOException, InputMismatchException{
+	public static TransazioneFisica read(Scanner sc) {
 		int id=0;
 		String data="", citta="";
 		try {
@@ -29,9 +32,8 @@ public class TransazioneFisica extends Transazione {
 			System.out.print("Data (GGMMAAAA): ");data=sc.nextLine();if(data.equals(""))return null;
 			System.out.print("Citta': ");citta=sc.nextLine();if(citta.equals(""))return null;
 		} catch (InputMismatchException e) {
+			//TODO aggiusta tutte le gestioni delle exception
 			System.err.println("Errore nella registrazione di una transazione fisica");
-			//si usa throw perché ferma il programma invece di semplicemente stampare l'errore e continuare
-			throw e;
 		}
 		return new TransazioneFisica(id, data, citta);
 	}
@@ -62,7 +64,7 @@ public class TransazioneFisica extends Transazione {
 		for(Libro libro:getLibri().values())System.out.println(libro);
 		System.out.println();
 	}
-	
+
 	//TODO print
 	//TODO nome file è un oggetto
 	@Override
