@@ -62,7 +62,9 @@ public class TransazioneFisica extends Transazione {
 		for(Libro libro:getLibri().values())System.out.println(libro);
 		System.out.println();
 	}
-
+	
+	//TODO print
+	//TODO nome file è un oggetto
 	@Override
 	public void printFile(PrintStream nomeFile) {
 		nomeFile.println("'f' "+getId()+" "+getData()+" "+citta+"\n");

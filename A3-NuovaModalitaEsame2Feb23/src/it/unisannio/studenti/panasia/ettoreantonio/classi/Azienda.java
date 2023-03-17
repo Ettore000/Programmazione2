@@ -34,15 +34,17 @@ public class Azienda {
 		return result;
 	}*/
 
-	public HashMap<Integer, Transazione> filtraTransazioniPerData(String data) {
-		HashMap<Integer, Transazione> risultato=new HashMap<Integer, Transazione>();
-		for (Integer id:transazioni.keySet()) {
+	public Azienda filtraTransazioniPerData(String data) {
+		HashMap<Integer, Transazione> risultatoT=new HashMap<Integer, Transazione>();
+		HashMap<String, Libro> risultatoL=new HashMap<String, Libro>();
+			for (Integer id:transazioni.keySet()) {
 			Transazione transazione=transazioni.get(id);
 			if (transazione.getData().equalsIgnoreCase(data)) { //si utilizza equalsIgnoreCase() per confrontare due stringhe ignorando le differenze tra lettere maiuscole e minuscole
-				risultato.put(id, transazione);
+				risultatoT.put(id, transazione);
+				risultatoL.putAll(transazione.getLibri());
 			}
 		}
-		return risultato;
+		return new Azienda(risutatoT, risultatoL);
 	}
 
 	public HashMap<String, Libro> filtraLibriPerAutore(String autore) {

@@ -23,7 +23,7 @@ public abstract class Transazione {
 	public abstract void printFile(PrintStream nomeFile);
 
 	private int id;
-	private String data;
-	private Map<String, TransazioneOnline> transazioniOnline;
+	private String data; //TODO TIPO DATE
+	private Map<String, TransazioneOnline> transazioniOnline;//TODO non servono
 	private Map<String, TransazioneFisica> transazioniFisiche;
 }

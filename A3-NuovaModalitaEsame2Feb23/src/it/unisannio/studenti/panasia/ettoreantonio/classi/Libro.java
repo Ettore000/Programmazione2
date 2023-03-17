@@ -21,7 +21,7 @@ public class Libro {
 		return prezzo;
 	}
 
-	public static Libro read(Scanner sc) throws IOException, InputMismatchException{
+	public static Libro read(Scanner sc){
 		String titolo="", autore="", input="";
 		double prezzo=0;
 		try {
@@ -49,7 +49,7 @@ public class Libro {
 	 * restiruisce la lista di libri compresi da una transazione
 	 */
 	@Override
-	public String toString() {
+	public String toString() {//TODO usare print
 		StringBuilder sb=new StringBuilder();
 
 		sb.append(titolo+"\n");
