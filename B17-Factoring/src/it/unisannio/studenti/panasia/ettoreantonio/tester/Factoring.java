@@ -16,5 +16,6 @@ public class Factoring {
 				numero/=i;
 			}
 		}
+		sc.close();
 	}
 }
