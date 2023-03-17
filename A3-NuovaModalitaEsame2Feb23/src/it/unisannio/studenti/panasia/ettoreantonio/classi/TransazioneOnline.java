@@ -42,6 +42,8 @@ public class TransazioneOnline extends Transazione {
 			e.printStackTrace();
 			return null; //in questo modo se si verifica questa eccezione il programma non inserisce la nuova istanza
 		} catch () {
+			
+		}
 		return new TransazioneOnline(id, data, ip);
 	}
 
