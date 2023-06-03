@@ -4,7 +4,7 @@
  * - operatori: AND &&, OR ||, NOT !
  */
 
-package lezioneb10;
+package lezioneb10_AND_OR_NOT;
 
 public class Main {
 

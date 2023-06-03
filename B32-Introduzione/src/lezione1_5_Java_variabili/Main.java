@@ -1,4 +1,4 @@
-package lezione1_5;
+package lezione1_5_Java_variabili;
 /* Lezione 3
  * Perchè imparare Java:
  * 

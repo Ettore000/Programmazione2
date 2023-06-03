@@ -8,7 +8,7 @@
  * - ternary operator
  */
 
-package lezioneb11;
+package lezioneb11_IF_ternaryOperator;
 
 public class Main {
 

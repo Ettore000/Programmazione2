@@ -5,7 +5,7 @@
  * - attributi: PI 
  */
 
-package lezione8;
+package lezione8_ClasseMath;
 
 public class Main {
 

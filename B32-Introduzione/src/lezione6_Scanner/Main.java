@@ -6,7 +6,7 @@
  * - creare domande per utente: nome, cognome, eta, citta
  */
 
-package lezione6;
+package lezione6_Scanner;
 
 import java.util.Scanner;
 

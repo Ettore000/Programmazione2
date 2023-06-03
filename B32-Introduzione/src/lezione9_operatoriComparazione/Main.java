@@ -10,7 +10,7 @@
  * 		!=
  */
 
-package lezione9;
+package lezione9_operatoriComparazione;
 
 public class Main {
 

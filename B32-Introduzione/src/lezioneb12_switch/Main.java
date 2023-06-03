@@ -2,7 +2,7 @@
  * - gli Switch
  */
 
-package lezioneb12;
+package lezioneb12_switch;
 
 public class Main {
 

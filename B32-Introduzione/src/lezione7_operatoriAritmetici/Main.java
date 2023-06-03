@@ -8,7 +8,7 @@
  * 
  */
 
-package lezione7;
+package lezione7_operatoriAritmetici;
 
 public class Main {
 
