@@ -9,7 +9,7 @@ public class Studente extends Persona{
 		System.out.println("Sto studiando...");
 	}
 	
-	@Override //serve a segnalare l'override
+	@Override
 	void saluta() {
 		System.out.println("Buongiorno Prof.");
 	}

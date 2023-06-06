@@ -14,6 +14,10 @@ public class Main {
 		Insegnante insegnante1=new Insegnante("Marco", "Verdi");
 		
 		Persona[] classe = {studente1, insegnante1}; //polimorfismo di Persona
+		
+		for (Persona persona : classe) {
+			persona.saluta();
+		}
 	}
 
 }
