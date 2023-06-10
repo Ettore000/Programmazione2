@@ -4,6 +4,8 @@
 
 package classi;
 
+import java.util.Scanner;
+
 public class Camion {
 	public Camion(int numeroAssi, int peso) {
 		this.numeroAssi = numeroAssi;
