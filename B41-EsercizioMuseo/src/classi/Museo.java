@@ -4,8 +4,8 @@ public class Museo {
 	/*
 	 * Un museo ha organizzato il proprio archivio in tre File, come segue:
 			Libri				(Autore	//	Titolo	//	anno		//	collocazione)
-			Stampe				(Autore	//	Titolo	//	tecnica		//	anno//collocazione)
-			Opere Multimediali	(Autore	//	Titolo	//	supporto	//	anno//collocazione)
+			Stampe				(Autore	//	Titolo	//	tecnica		//	anno	//	collocazione)
+			Opere Multimediali	(Autore	//	Titolo	//	supporto	//	anno	//	collocazione)
 	 */
 	
 	/*
