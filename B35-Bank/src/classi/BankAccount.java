@@ -1,20 +1,36 @@
 package classi;
 
+/**
+ * BankAccount: modella un conto corrente bancario
+ */
 public class BankAccount {
-	//crea un nuovo conto con bilancio iniziale
+	/**
+	 * Crea un nuovo conto con bilancio iniziale
+	 * @param nomeIntestatario
+	 * @param massimoScoperto
+	 * @param balance
+	 */
 	public BankAccount(String nomeIntestatario, double massimoScoperto, double balance) {
 		this.nomeIntestatario=nomeIntestatario;
 		this.massimoScoperto=massimoScoperto;
 		this.balance = balance;
 	}
 
-	//crea un nuovo conto senza aggiungere denaro
+	/**
+	 * Crea un nuovo conto senza aggiungere denaro
+	 * @param nomeIntestatario
+	 * @param massimoScoperto
+	 */
 	public BankAccount(String nomeIntestatario, double massimoScoperto) {
 		this.nomeIntestatario=nomeIntestatario;
 		this.massimoScoperto=massimoScoperto; //è la somma per cui si può andare sotto il bilancio
 		this.balance = 0;
 	}
-	
+
+	/**
+	 * Crea un nuovo conto con massimo mensile scoperto predefinito per un normale privato
+	 * @param nomeIntestatario
+	 */
 	//massimo scoperto mensile predefinito
 	public BankAccount(String nomeIntestatario) {
 		this.nomeIntestatario=nomeIntestatario;
@@ -22,31 +38,51 @@ public class BankAccount {
 		this.balance = 0;
 	}
 
+	/**
+	 * Ottiene il nome dell'intestatario
+	 * @return nomeIntestatario
+	 */
 	public String getNomeIntestatario() {
 		return nomeIntestatario;
 	}
-	
+
+	/**
+	 * Ottiene il massimo scoperto mensile
+	 * @return massimoScoperto
+	 */
 	public double getMassimoScoperto() {
 		return massimoScoperto;
 	}
-	
-	//modifica massimo scoperto
+
+	/**
+	 * Modifica il massimo scoperto mensile
+	 * @param massimoScoperto
+	 */
 	public void setMassimoScoperto(double massimoScoperto) {
 		this.massimoScoperto=massimoScoperto;
 	}
-	
-	//saldo
+
+	/**
+	 * Ottiene il saldo
+	 * @return balance
+	 */
 	public double getBalance() {
 		return balance;
 	}
 
-	//deposito
+	/**
+	 * Deposita denaro sul conto corrente
+	 * @param amount
+	 */
 	public void deposit(double amount) {
 		System.out.println("Sto depositando €"+amount);
 		this.balance+=amount;
 	}
 
-	//prelievo
+	/**
+	 * Preleva denaro dal conto corrente
+	 * @param amount
+	 */
 	public void withdraw(double amount) {
 		//verifica sulla possibilità di prelevare
 		if (amount<=balance) {
@@ -57,11 +93,14 @@ public class BankAccount {
 			System.out.println("Il tuo saldo disponibile è di €"+balance);
 		}
 	}
-	
-	//output conto corrente
+
+	/**
+	 * Riassumo un conto corrente
+	 * @return stringa
+	 */
 	public String toString() {
 		String stringa=nomeIntestatario+"\n"+massimoScoperto+"\n"+balance;
-		
+
 		return stringa;
 	}
 

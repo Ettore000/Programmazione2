@@ -1,11 +1,9 @@
-
-
 package scenari;
 
 import classi.BankAccount;
 
 /**
- * Scenario di prelievo
+ * Prelievo: Scenario generico di prelievo
  */
 
 public class Prelievo {
