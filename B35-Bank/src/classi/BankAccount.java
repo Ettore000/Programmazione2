@@ -1,5 +1,8 @@
 package classi;
 
+import java.io.PrintStream;
+import java.util.Scanner;
+
 /**
  * BankAccount: modella un conto corrente bancario
  */
@@ -93,15 +96,77 @@ public class BankAccount {
 			System.out.println("Il tuo saldo disponibile e' di €"+balance);
 		}
 	}
+	
+	/**
+	 * Legge un Conto corrente bancario da tastiera
+	 * @return BankAccount(nomeIntestatario, massimoScoperto, balance)
+	 */
+	public static BankAccount read() {
+		Scanner sc=new Scanner(System.in);
+		
+		String nomeIntestatario="";
+		double massimoScoperto=0, balance=0;
+		
+		System.out.print("Nome intestatario: ");
+		nomeIntestatario=sc.nextLine();
+		if(nomeIntestatario.equals(""))return null;
+		
+		System.out.print("Massimo scoperto: ");
+		massimoScoperto=sc.nextDouble();sc.nextLine();
+		if(massimoScoperto==0)return null;
+		
+		System.out.print("Bilancio: ");
+		balance=sc.nextDouble();sc.nextLine();
+		if(balance==0)return null; //anche se il bilancio può essere 0, in questo caso non deve esserlo
+		
+		return new BankAccount(nomeIntestatario, massimoScoperto, balance);
+	}
+	
+	/**
+	 * Legge un Conto corrente bancario da file
+	 * @return BankAccount(nomeIntestatario, massimoScoperto, balance)
+	 */
+	public static BankAccount read(Scanner sc) {
+		String nomeIntestatario="";
+		double massimoScoperto=0, balance=0;
+		
+		if(!sc.hasNext())return null;
+		nomeIntestatario=sc.next();
+		
+		if(!sc.hasNext())return null;
+		massimoScoperto=sc.nextDouble();
+		
+		if(!sc.hasNext())return null;
+		balance=sc.nextDouble();
+		
+		return new BankAccount(nomeIntestatario, massimoScoperto, balance);
+	}
 
 	/**
-	 * Riassumo un conto corrente
+	 * Riassume un conto corrente
 	 * @return stringa
 	 */
 	public String toString() {
 		String stringa=nomeIntestatario+"\n"+massimoScoperto+"\n"+balance;
 
 		return stringa;
+	}
+	
+	/**
+	 * Visualizza un conto corrente bancario
+	 */
+	public void print() {
+		System.out.println("Nome intestatario: "+nomeIntestatario);
+		System.out.println("Massimo scoperto: "+massimoScoperto);
+		System.out.println("Bilancio: "+balance);
+	}
+	
+	/**
+	 * Scrive su file un conto corrente bancario
+	 * @param ps
+	 */
+	public void print(PrintStream ps) {
+		ps.print(nomeIntestatario+" "+massimoScoperto+" "+balance+"\n");
 	}
 
 	private String nomeIntestatario;

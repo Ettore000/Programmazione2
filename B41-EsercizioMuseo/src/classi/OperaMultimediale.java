@@ -105,19 +105,19 @@ public class OperaMultimediale {
 		String autore="", titolo="", supporto="", collocazione="";
 		int anno=0;
 
-		if(sc.hasNext())return null;
+		if(!sc.hasNext())return null;
 		autore=sc.next();
 
-		if(sc.hasNext())return null;
+		if(!sc.hasNext())return null;
 		titolo=sc.next();
 
-		if(sc.hasNext())return null;
+		if(!sc.hasNext())return null;
 		supporto=sc.next();
 
-		if(sc.hasNext())return null;
+		if(!sc.hasNext())return null;
 		anno=sc.nextInt();
 
-		if(sc.hasNext())return null;
+		if(!sc.hasNext())return null;
 		collocazione=sc.next();
 
 		return new OperaMultimediale(autore, titolo, supporto, anno, collocazione);

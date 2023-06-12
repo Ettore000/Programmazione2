@@ -1,0 +1,82 @@
+package classi;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Banca: modella una banca che gestisce dei conti correnti
+ */
+public class Banca {
+	/**
+	 * Crea una banca
+	 */
+	public Banca() {
+		this.contiCorrenti=new ArrayList<BankAccount>();
+	}
+
+	/**
+	 * Ottiene una lista di conti correnti gestiti dalla banca
+	 * @return contiCorrenti
+	 */
+	public List<BankAccount> getContiCorrenti() {
+		return contiCorrenti;
+	}
+
+	/**
+	 * Aggiunge un conto corrente alla lista
+	 * @param conto
+	 */
+	public void apriConto(BankAccount conto) {
+		contiCorrenti.add(conto);
+	}
+
+	/**
+	 * Elimina un conto corrente dalla lista
+	 * @param conto
+	 */
+	public void chiudiConto(BankAccount conto) {
+		contiCorrenti.remove(conto);
+	}
+
+	/**
+	 * Cerca un conto corrente per nome
+	 * @param nomeIntestatario
+	 * @return conto
+	 */
+	public BankAccount cercaContoCorrentePerNome(String nomeIntestatario) {
+		for (BankAccount conto : contiCorrenti) {
+			if (conto.getNomeIntestatario().equals(nomeIntestatario)) {
+				return conto;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * Calcola il saldo totale che possiede la banca sommando tutti i conti correnti che gestisce
+	 * @return saldoTotale
+	 */
+	public double calcolaSaldoTotale() {
+		double saldoTotale=0;
+		for (BankAccount conto : contiCorrenti) {
+			saldoTotale+=conto.getBalance();
+		}
+		return saldoTotale;
+	}
+
+	/**
+	 * Visualizza tutti i conti correnti
+	 */
+	public void visualizzaContiCorrenti() {
+		for (BankAccount conto : contiCorrenti) {
+			conto.print();
+			System.out.println("--------------------------------");
+		}
+	}
+
+	//leggi conti correnti da file
+
+	//scrivi conti correnti su file
+
+	private List<BankAccount> contiCorrenti;
+}

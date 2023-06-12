@@ -106,19 +106,19 @@ public class Stampa {
 		int anno=0;
 
 		autore=sc.next();
-		if(sc.hasNext())return null;
+		if(!sc.hasNext())return null;
 
 		titolo=sc.next();
-		if(sc.hasNext())return null;
+		if(!sc.hasNext())return null;
 
 		tecnica=sc.next();
-		if(sc.hasNext())return null;
+		if(!sc.hasNext())return null;
 
 		anno=sc.nextInt();sc.next();
-		if(sc.hasNext())return null;
+		if(!sc.hasNext())return null;
 
 		collocazione=sc.next();
-		if(sc.hasNext())return null;
+		if(!sc.hasNext())return null;
 
 		return new Stampa(autore, titolo, tecnica, anno, collocazione);
 	}
