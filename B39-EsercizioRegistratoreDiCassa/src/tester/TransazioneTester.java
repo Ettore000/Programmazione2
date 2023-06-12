@@ -1,12 +1,11 @@
-/**
- * Modella pagamenti
- */
-
 package tester;
 
 import classi.Registratore;
 import classi.Transazione;
 
+/**
+ * TransazioneTester: test driver della classe transazione
+ */
 public class TransazioneTester {
 
 	public static void main(String[] args) {

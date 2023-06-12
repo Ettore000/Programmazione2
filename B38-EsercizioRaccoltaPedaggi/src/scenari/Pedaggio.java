@@ -7,6 +7,9 @@ package scenari;
 import classi.Camion;
 import classi.Casello;
 
+/**
+ * Pedaggio: scenario di gestione di pedaggi in un casello autostradale per transito camion
+ */
 public class Pedaggio {
 
 	public static void main(String[] args) {

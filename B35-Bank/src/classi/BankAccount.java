@@ -90,7 +90,7 @@ public class BankAccount {
 			this.balance-=amount;
 		} else {
 			System.out.println("Saldo di €"+amount+" non disponibile sul conto");
-			System.out.println("Il tuo saldo disponibile è di €"+balance);
+			System.out.println("Il tuo saldo disponibile e' di €"+balance);
 		}
 	}
 

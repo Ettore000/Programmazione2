@@ -1,36 +1,60 @@
-/**
- * Modella un nome completo e il titolo attribuibile a esso a seconda dello
- * stato sociale
- */
-
 package classi;
 
 import java.io.PrintStream;
 import java.util.Scanner;
 
+/**
+ * Nome: modella un nome completo e il titolo attribuibile a esso a seconda dello stato sociale
+ */
 public class Nome {
+	/**
+	 * Crea un'stanza dell'oggetto specificando titolo sociale, cognome e nome
+	 * @param titolo
+	 * @param cognome
+	 * @param nome
+	 */
 	public Nome(String titolo, String cognome, String nome) {
 		this.titolo = titolo;
 		this.cognome = cognome;
 		this.nome = nome;
 	}
 
+	/**
+	 * Ottiene il titolo sociale
+	 * @return titolo
+	 */
 	public String getTitolo() {
 		return titolo;
 	}
 
+	/**
+	 * Modifica il titolo sociale
+	 * @param titolo
+	 */
 	public void setTitolo(String titolo) {
 		this.titolo = titolo;
 	}
 
+	/**
+	 * Ottiene il nome
+	 * @return nome
+	 */
 	public String getNome() {
 		return nome;
 	}
 
+	/**
+	 * Ottiene il cognome
+	 * @return cognome
+	 */
 	public String getCognome() {
 		return cognome;
 	}
 
+	/**
+	 * Ottiene le iniziali del nome e del cognome
+	 * @return iniziali
+	 */
 	public String getIiniziali() {
 		char inizialiNome=nome.charAt(0);
 		char inizialiCognome=cognome.charAt(0);
@@ -40,58 +64,73 @@ public class Nome {
 		return iniziali;
 	}
 
-	@Override
-	public String toString() {
-		return "Nome [titolo=" + titolo + ", cognome=" + cognome + ", nome=" + nome + "]";
-	}
-
-	//input da tastiera
+	/**
+	 * Crea un'istanza leggendo i dati da tastiera
+	 * @return Nome(titolo, cognome, nome)
+	 */
 	public static Nome read() {
-		String titolo="non determinabile", cognome="non determinabile", nome="non determinabile";
-		
-		try {
-			Scanner sc=new Scanner(System.in);
+		String titolo="", cognome="", nome="";
 
-			System.out.println("Titolo: ");
-			titolo=sc.nextLine();
-			if(titolo.equals(""))return null;
+		Scanner sc=new Scanner(System.in);
 
-			System.out.println("Cognome: ");
-			cognome=sc.nextLine();
-			if(cognome.equals(""))return null;
+		System.out.print("Titolo: ");
+		titolo=sc.nextLine();
+		if(titolo.equals(""))return null;
 
-			System.out.println("Nome: ");
-			nome=sc.nextLine();
-			if(nome.equals(""))return null;
-		} catch (NullPointerException e) {
-			System.err.println("Dati in lettura da tastiera non conformi");
-		}
+		System.out.print("Cognome: ");
+		cognome=sc.nextLine();
+		if(cognome.equals(""))return null;
+
+		System.out.print("Nome: ");
+		nome=sc.nextLine();
+		if(nome.equals(""))return null;
 
 		return new Nome(titolo, cognome, nome);
 	}
 
 	//input da file
+	/**
+	 * Crea un'istanza leggendo i dati da file
+	 * @param sc
+	 * @return Nome(titolo, cognome, nome)
+	 */
 	public static Nome read(Scanner sc) {
-		String titolo="non determinabile", cognome="non determinabile", nome="non determinabile";
+		String titolo="", cognome="", nome="";
 
-		try {
-			titolo=sc.next();
-			if(!sc.hasNext())return null; //controllo di fine input
+		if(!sc.hasNext())return null; //controllo di fine input
+		titolo=sc.next();
+		
+		if(!sc.hasNext())return null;
+		cognome=sc.next();
 
-			cognome=sc.next();
-			if(!sc.hasNext())return null;
-
-			nome=sc.next();
-			if(!sc.hasNext())return null;
-		} catch (NullPointerException e) {
-			System.err.println("Dati in lettura da file non conformi");
-			
-		}
+		if(!sc.hasNext())return null;
+		nome=sc.next();
 
 		return new Nome(titolo, cognome, nome);
 	}
 
-	//scrittura su file
+	/**
+	 * Riassunto dell'istanza dell'oggetto
+	 * @return stringa con titolo, cognome e nome
+	 */
+	@Override
+	public String toString() {
+		return "Nome [titolo=" + titolo + ", cognome=" + cognome + ", nome=" + nome + "]";
+	}
+
+	/**
+	 * Stampa l'istanza su schermo
+	 */
+	public void print() {
+		System.out.println("Titolo: "+titolo);
+		System.out.println("Cognome: "+nome);
+		System.out.println("Nome: "+cognome);
+	}
+
+	/**
+	 * Scrive l'istanza su file
+	 * @param ps
+	 */
 	public void print(PrintStream ps) {
 		ps.print(titolo+" "+cognome+" "+nome+"\n");
 	}

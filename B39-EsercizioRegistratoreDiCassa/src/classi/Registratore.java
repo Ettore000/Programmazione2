@@ -1,37 +1,54 @@
 package classi;
 
+/**
+ * Registratore: modella il comportamento di un registratore di cassa
+ */
 public class Registratore {
-	//cassa vuota
+	/**
+	 * Crea un registratore di cassa senza denaro all'interno
+	 */
 	public Registratore() {
 		this.denaroInCassa = 0;
 		this.numeroAcquisti = 0;
-		this.restoPagamento = 0;
 	}
 
-	//cassa non vuota
+	/**
+	 * Crea un registratore di cassa specificando quanto denaro c'è all'interno
+	 * @param denaroInCassa
+	 */
 	public Registratore(double denaroInCassa) {
 		this.denaroInCassa = denaroInCassa;
 		this.numeroAcquisti = 0;
-		this.restoPagamento = 0;
 	}
 
+	/**
+	 * Ottiene il valore del denaro in cassa dall'ultima riscossione
+	 * @return denaroInCassa
+	 */
 	public double getDenaroInCassa() {
 		return denaroInCassa;
 	}
 
+	/**
+	 * Ottiene il numero degli acquisti registrati dall'ultima riscossione
+	 * @return numeroAcquisti
+	 */
 	public int getNumeroAcquisti() {
 		return numeroAcquisti;
 	}
 
-	public double getRestoPagamento() {
-		return restoPagamento;
-	}
-
+	/**
+	 * Registra il pagamento,
+	 * calcola il resto,
+	 * incrementa di uno il numero degli acquisti registrati,
+	 * aggiunge il denaro in cassa
+	 * @param t
+	 */
 	public void pagamento(Transazione t) {
 		System.out.println("\nAcquisto in corso [Totale €"+t.getTotaleDovuto()+"]");
-
 		System.out.println("L'acquirente ha pagato: €"+t.getPagamentoAcquirente());
 		
+		double restoPagamento;
 		if (t.getPagamentoAcquirente()>t.getTotaleDovuto()) {
 			restoPagamento=t.getPagamentoAcquirente()-t.getTotaleDovuto();
 			System.out.println("Resto: €"+restoPagamento);
@@ -41,6 +58,9 @@ public class Registratore {
 		denaroInCassa+=t.getTotaleDovuto(); //aggiunta del denaro in cassa
 	}
 
+	/**
+	 * Riscuote la cassa e azzera il numero degli acquisti registrati
+	 */
 	public void riscuotiCassa() {
 		System.out.println("\n\n***Riscuotendo cassa***");
 		System.out.println("Numero acquisti registrati: "+numeroAcquisti);
@@ -50,12 +70,14 @@ public class Registratore {
 		denaroInCassa=0;
 	}
 
-	//Riassunto del pagamento
+	/**
+	 * Riassume il registratore di cassa
+	 */
 	@Override
 	public String toString() {
 		return "Registratore [denaroInCassa=" + denaroInCassa + ", numeroAcquisti=" + numeroAcquisti + "]";
 	}
 
-	private double denaroInCassa, restoPagamento;
+	private double denaroInCassa;
 	private int numeroAcquisti;
 }

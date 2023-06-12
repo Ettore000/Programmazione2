@@ -1,13 +1,12 @@
-/**
- * Scenario di gestione di pedaggi nel caso in cui ci siano più caselli
- * sparsi per le uscite delle autostrade
- */
-
 package scenari;
 
 import classi.Camion;
 import classi.Casello;
 
+/**
+ * GestioneAutostrade: scenario di gestione di pedaggi nel caso in cui ci siano più caselli
+ * sparsi per le uscite delle autostrade
+ */
 public class GestioneAutostrade {
 
 	public static void main(String[] args) {

@@ -1,26 +1,34 @@
-/**
- * Modella la retribuzione di un dipendente
- */
-
 package classi;
 
+/**
+ * Dipendente: modella la retribuzione di un dipendente
+ */
 public class Dipendente {
+	/**
+	 * Crea un profilo dipendente
+	 * @param nome
+	 * @param retribuzioneOraria
+	 */
 	public Dipendente(String nome, double retribuzioneOraria) {
 		this.nome = nome;
 		this.retribuzioneOraria = retribuzioneOraria;
-		this.oreLavorate = 0;
-		this.oreStraordinario = 0;
 	}
 	
-	//se la retribuzione oraria non viene specificata, allora viene applicato un valore predefinito
+	/**
+	 * Crea un profilo dipendente in cui non viene specificata la retribuzione oraria,
+	 * quindi viene applicato un valore predefinito
+	 * @param nome
+	 */
 	public Dipendente(String nome) {
 		this.nome = nome;
 		this.retribuzioneOraria = 6.26;
-		this.oreLavorate = 0;
-		this.oreStraordinario = 0;
 	}
 	
-	//calcola la paga di un dipendente
+	/**
+	 * Calcola la paga di un dipendente
+	 * @param oreLavorate
+	 * @return paga
+	 */
 	public double calcolaPaga(int oreLavorate) {
 		double paga;
 		if (oreLavorate<40) { //niente straordinari
@@ -35,32 +43,40 @@ public class Dipendente {
 		return paga;
 	}
 
+	/**
+	 * Ottiene il nome
+	 * @return nome
+	 */
 	public String getNome() {
 		return nome;
 	}
+	
+	/**
+	 * Ottiene il valore della retribuzione oraria
+	 * @return retribuzioneOraria
+	 */
 	public double getRetribuzioneOraria() {
 		return retribuzioneOraria;
 	}
-	public int getOreLavorate() {
-		return oreLavorate;
-	}
-	public int getOreStraordinario() {
-		return oreStraordinario;
-	}
 	
-	//la retribuzione oraria può cambiare
+	/**
+	 * Modifica il valore della retribuzione oraria
+	 * @param retribuzioneOraria
+	 */
 	public void setRetribuzioneOraria(double retribuzioneOraria) {
 		this.retribuzioneOraria = retribuzioneOraria;
 	}
 	
 	//Riassunto del dipendente
+	/**
+	 * Riassunto del dipendente
+	 * @return stringa con nome e retribuzione oraria
+	 */
 	@Override
 	public String toString() {
-		return "Dipendente [nome=" + nome + ", retribuzioneOraria=" + retribuzioneOraria + ", oreLavorate="
-				+ oreLavorate + ", oreStraordinario=" + oreStraordinario + "]";
+		return "Dipendente [nome=" + nome + ", retribuzioneOraria=" + retribuzioneOraria +"]";
 	}
 
 	private String nome;
 	private double retribuzioneOraria;
-	private int oreLavorate, oreStraordinario;
 }
