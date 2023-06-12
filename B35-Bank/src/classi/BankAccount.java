@@ -28,19 +28,8 @@ public class BankAccount {
 	 */
 	public BankAccount(String nomeIntestatario, double balance) {
 		this.nomeIntestatario=nomeIntestatario;
-		this.massimoScoperto=Costante.MASSIMO_SCOPERTO;
+		this.massimoScoperto=Costante.MASSIMO_SCOPERTO; //è la somma per cui si può andare sotto il bilancio
 		this.balance = balance;
-	}
-
-	/**
-	 * Crea un nuovo conto senza aggiungere denaro
-	 * @param nomeIntestatario
-	 * @param massimoScoperto
-	 */
-	public BankAccount(String nomeIntestatario, double massimoScoperto) {
-		this.nomeIntestatario=nomeIntestatario;
-		this.massimoScoperto=massimoScoperto; //è la somma per cui si può andare sotto il bilancio
-		this.balance = 0;
 	}
 
 	/**
@@ -50,7 +39,7 @@ public class BankAccount {
 	//massimo scoperto mensile predefinito
 	public BankAccount(String nomeIntestatario) {
 		this.nomeIntestatario=nomeIntestatario;
-		this.massimoScoperto=100;
+		this.massimoScoperto=Costante.MASSIMO_SCOPERTO;
 		this.balance = 0;
 	}
 
