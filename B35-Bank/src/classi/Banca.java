@@ -73,6 +73,14 @@ public class Banca {
 			System.out.println("--------------------------------");
 		}
 	}
+	
+	//TODO riordina conti correnti
+	
+	//TODO conto corrente con il massimo bilancio
+	
+	//TODO conto corrente con il minimo bilancio
+	
+	//TODO valore medio di bilancio dei conti correnti
 
 	//TODO leggi conti correnti da file
 
