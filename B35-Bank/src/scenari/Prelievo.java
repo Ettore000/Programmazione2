@@ -1,10 +1,12 @@
-/**
- * Scenario di prelievo
- */
+
 
 package scenari;
 
 import classi.BankAccount;
+
+/**
+ * Scenario di prelievo
+ */
 
 public class Prelievo {
 

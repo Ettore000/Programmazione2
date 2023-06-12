@@ -1,3 +1,8 @@
+/**
+ * Modella un nome completo e il titolo attribuibile a esso a seconda dello
+ * stato sociale
+ */
+
 package classi;
 
 import java.io.PrintStream;
@@ -80,6 +85,7 @@ public class Nome {
 			if(!sc.hasNext())return null;
 		} catch (NullPointerException e) {
 			System.err.println("Dati in lettura da file non conformi");
+			
 		}
 
 		return new Nome(titolo, cognome, nome);
