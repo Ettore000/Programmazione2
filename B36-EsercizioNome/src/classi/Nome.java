@@ -65,7 +65,7 @@ public class Nome {
 	}
 
 	/**
-	 * Crea un'istanza leggendo i dati da tastiera
+	 * legge l'oggetto da tastiera
 	 * @return Nome(titolo, cognome, nome)
 	 */
 	public static Nome read() {
@@ -88,9 +88,8 @@ public class Nome {
 		return new Nome(titolo, cognome, nome);
 	}
 
-	//input da file
 	/**
-	 * Crea un'istanza leggendo i dati da file
+	 * legge l'oggetto da file
 	 * @param sc
 	 * @return Nome(titolo, cognome, nome)
 	 */
