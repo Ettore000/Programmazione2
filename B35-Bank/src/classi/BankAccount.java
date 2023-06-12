@@ -3,6 +3,8 @@ package classi;
 import java.io.PrintStream;
 import java.util.Scanner;
 
+import util.Costante;
+
 /**
  * BankAccount: modella un conto corrente bancario
  */
@@ -16,6 +18,17 @@ public class BankAccount {
 	public BankAccount(String nomeIntestatario, double massimoScoperto, double balance) {
 		this.nomeIntestatario=nomeIntestatario;
 		this.massimoScoperto=massimoScoperto;
+		this.balance = balance;
+	}
+	
+	/**
+	 * Crea un nuovo conto specificando il denaro iniziale
+	 * @param nomeIntestatario
+	 * @param balance
+	 */
+	public BankAccount(String nomeIntestatario, double balance) {
+		this.nomeIntestatario=nomeIntestatario;
+		this.massimoScoperto=Costante.MASSIMO_SCOPERTO;
 		this.balance = balance;
 	}
 

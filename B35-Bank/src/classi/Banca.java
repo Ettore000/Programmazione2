@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Banca: modella una banca che gestisce dei conti correnti
+ * Banca: modella una banca che gestisce dei conti correnti "BankAccount"
  */
 public class Banca {
 	/**
@@ -74,9 +74,9 @@ public class Banca {
 		}
 	}
 
-	//leggi conti correnti da file
+	//TODO leggi conti correnti da file
 
-	//scrivi conti correnti su file
+	//TODO scrivi conti correnti su file
 
 	private List<BankAccount> contiCorrenti;
 }
