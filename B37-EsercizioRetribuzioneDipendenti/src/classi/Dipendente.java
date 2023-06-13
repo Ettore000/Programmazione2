@@ -91,7 +91,9 @@ public class Dipendente {
 			retribuzioneOraria = sc.nextDouble();
 			if(retribuzioneOraria==0)return null;
 		} catch (InputMismatchException e) {
-			System.err.println("Retribuzione oraria letta non conforme");
+			System.err.println("input non valido, la retribuzione oraria assegnata sarà di €"+Costante.RETRIBUZIONE_STANDARD);
+			sc.nextLine();
+			retribuzioneOraria=Costante.RETRIBUZIONE_STANDARD;
 		}
 
 		return new Dipendente(nome, retribuzioneOraria);

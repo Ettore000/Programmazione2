@@ -1,12 +1,13 @@
 package classi;
 
 import java.io.PrintStream;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import util.Costante;
 
 /**
- * BankAccount: modella un conto corrente bancario
+ * Modella un conto corrente bancario
  */
 public class BankAccount {
 	/**
@@ -94,8 +95,8 @@ public class BankAccount {
 			System.out.println("Sto prelevando €"+amount);
 			this.balance-=amount;
 		} else {
-			System.out.println("Saldo di €"+amount+" non disponibile sul conto");
-			System.out.println("Il tuo saldo disponibile e' di €"+balance);
+			throw new IllegalArgumentException("Saldo di €"+amount+" non disponibile sul conto");
+			//però in questo modo il programma viene arrestato
 		}
 	}
 	
@@ -113,13 +114,25 @@ public class BankAccount {
 		nomeIntestatario=sc.nextLine();
 		if(nomeIntestatario.equals(""))return null;
 		
-		System.out.print("Massimo scoperto: ");
-		massimoScoperto=sc.nextDouble();sc.nextLine();
-		if(massimoScoperto==0)return null;
+		try {
+			System.out.print("Massimo scoperto: ");
+			massimoScoperto = sc.nextDouble();sc.nextLine();
+			if (massimoScoperto == 0)return null;
+		} catch (InputMismatchException e) {
+			System.err.println("Input non valido, al massimo scoperto verra assegnato il valore di €"+Costante.MASSIMO_SCOPERTO);
+			sc.nextLine();
+			massimoScoperto=Costante.MASSIMO_SCOPERTO;
+		}
 		
-		System.out.print("Bilancio: ");
-		balance=sc.nextDouble();sc.nextLine();
-		if(balance==0)return null; //anche se il bilancio può essere 0, in questo caso non deve esserlo
+		try {
+			System.out.print("Bilancio: ");
+			balance=sc.nextDouble();sc.nextLine();
+			if(balance==0)return null; //anche se il bilancio può essere 0, in questo caso non deve esserlo
+		} catch (InputMismatchException e) {
+			System.err.println("Input non valido, al bilancio verrà assegnato il valore di €0");
+			sc.nextLine();
+			balance=0;
+		}
 		
 		return new BankAccount(nomeIntestatario, massimoScoperto, balance);
 	}

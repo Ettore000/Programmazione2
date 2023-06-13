@@ -15,7 +15,7 @@ public class Prelievo {
 		System.out.println("Puoi prelevare fino a €"+account.getBalance());
 		
 		//preleva
-		account.withdraw(70);
+		account.withdraw(7000);
 		
 		//stampa il saldo corrente dopo il prelievo
 		System.out.println("Il tuo saldo residuo è di €"+account.getBalance());
