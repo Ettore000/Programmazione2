@@ -11,7 +11,7 @@ public class Banca {
 	 * Crea una banca
 	 */
 	public Banca() {
-		this.contiCorrenti=new ArrayList<BankAccount>();
+		this.contiCorrenti=new ArrayList<BankAccount>(); //implementazione specifica per la variabile
 	}
 
 	/**
@@ -87,4 +87,9 @@ public class Banca {
 	//TODO scrivi conti correnti su file
 
 	private List<BankAccount> contiCorrenti;
+	/*
+	 * la dichiarazione con List<>
+	 * fornisce una maggiore flessibilità nel caso si desideri
+	 * cambiare l'implementazione della lista in futuro
+	 */
 }

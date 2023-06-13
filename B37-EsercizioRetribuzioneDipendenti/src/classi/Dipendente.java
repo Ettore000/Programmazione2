@@ -1,5 +1,10 @@
 package classi;
 
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+import util.Costante;
+
 /**
  * Dipendente: modella la retribuzione di un dipendente
  */
@@ -13,7 +18,7 @@ public class Dipendente {
 		this.nome = nome;
 		this.retribuzioneOraria = retribuzioneOraria;
 	}
-	
+
 	/**
 	 * Crea un profilo dipendente in cui non viene specificata la retribuzione oraria,
 	 * quindi viene applicato un valore predefinito
@@ -21,9 +26,9 @@ public class Dipendente {
 	 */
 	public Dipendente(String nome) {
 		this.nome = nome;
-		this.retribuzioneOraria = 6.26;
+		this.retribuzioneOraria =Costante.RETRIBUZIONE_STANDARD;
 	}
-	
+
 	/**
 	 * Calcola la paga di un dipendente
 	 * @param oreLavorate
@@ -39,7 +44,7 @@ public class Dipendente {
 			paga=40*retribuzioneOraria+30*(retribuzioneOraria*1.5); //vengono calcolate le ore fino al limite
 			System.out.println("Hai superato le 30 ore di straordinario, le ore successive al limite massimo non verranno calcolate");
 		}
-		
+
 		return paga;
 	}
 
@@ -50,7 +55,7 @@ public class Dipendente {
 	public String getNome() {
 		return nome;
 	}
-	
+
 	/**
 	 * Ottiene il valore della retribuzione oraria
 	 * @return retribuzioneOraria
@@ -58,7 +63,7 @@ public class Dipendente {
 	public double getRetribuzioneOraria() {
 		return retribuzioneOraria;
 	}
-	
+
 	/**
 	 * Modifica il valore della retribuzione oraria
 	 * @param retribuzioneOraria
@@ -66,7 +71,49 @@ public class Dipendente {
 	public void setRetribuzioneOraria(double retribuzioneOraria) {
 		this.retribuzioneOraria = retribuzioneOraria;
 	}
-	
+
+	/**
+	 * Legge un dipendente da tastiera
+	 * @return Dipendente(nome, retribuzioneOraria)
+	 */
+	public static Dipendente read() {
+		Scanner sc=new Scanner(System.in);
+
+		String nome="";
+		double retribuzioneOraria=0;
+
+		System.out.print("Nome: ");
+		nome=sc.next();
+		if(nome.equals(""))return null;
+
+		try {
+			System.out.print("Retribuzione oraria: ");
+			retribuzioneOraria = sc.nextDouble();
+			if(retribuzioneOraria==0)return null;
+		} catch (InputMismatchException e) {
+			System.err.println("Retribuzione oraria letta non conforme");
+		}
+
+		return new Dipendente(nome, retribuzioneOraria);
+	}
+
+	/**
+	 * Legge un dipendente da file
+	 * @return Dipendente(nome, retribuzioneOraria)
+	 */
+	public static Dipendente read(Scanner sc) {
+		String nome="";
+		double retribuzioneOraria=0;
+
+		if(!sc.hasNext())return null;
+		nome=sc.next();
+
+		if(!sc.hasNext())return null;
+		retribuzioneOraria=sc.nextDouble();
+
+		return new Dipendente(nome, retribuzioneOraria);
+	}
+
 	//Riassunto del dipendente
 	/**
 	 * Riassunto del dipendente

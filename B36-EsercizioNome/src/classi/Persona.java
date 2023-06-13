@@ -4,16 +4,16 @@ import java.io.PrintStream;
 import java.util.Scanner;
 
 /**
- * Nome: modella un nome completo e il titolo attribuibile a esso a seconda dello stato sociale
+ * Modella un nome completo e il titolo attribuibile a esso a seconda dello stato sociale
  */
-public class Nome {
+public class Persona {
 	/**
 	 * Crea un'stanza dell'oggetto specificando titolo sociale, cognome e nome
 	 * @param titolo
 	 * @param cognome
 	 * @param nome
 	 */
-	public Nome(String titolo, String cognome, String nome) {
+	public Persona(String titolo, String cognome, String nome) {
 		this.titolo = titolo;
 		this.cognome = cognome;
 		this.nome = nome;
@@ -68,7 +68,7 @@ public class Nome {
 	 * legge l'oggetto da tastiera
 	 * @return Nome(titolo, cognome, nome)
 	 */
-	public static Nome read() {
+	public static Persona read() {
 		String titolo="", cognome="", nome="";
 
 		Scanner sc=new Scanner(System.in);
@@ -85,7 +85,7 @@ public class Nome {
 		nome=sc.nextLine();
 		if(nome.equals(""))return null;
 
-		return new Nome(titolo, cognome, nome);
+		return new Persona(titolo, cognome, nome);
 	}
 
 	/**
@@ -93,7 +93,7 @@ public class Nome {
 	 * @param sc
 	 * @return Nome(titolo, cognome, nome)
 	 */
-	public static Nome read(Scanner sc) {
+	public static Persona read(Scanner sc) {
 		String titolo="", cognome="", nome="";
 
 		if(!sc.hasNext())return null; //controllo di fine input
@@ -105,7 +105,7 @@ public class Nome {
 		if(!sc.hasNext())return null;
 		nome=sc.next();
 
-		return new Nome(titolo, cognome, nome);
+		return new Persona(titolo, cognome, nome);
 	}
 
 	/**
