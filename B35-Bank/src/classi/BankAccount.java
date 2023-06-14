@@ -116,11 +116,10 @@ public class BankAccount {
 		
 		try {
 			System.out.print("Massimo scoperto: ");
-			massimoScoperto = sc.nextDouble();sc.nextLine();
-			if (massimoScoperto == 0)return null;
-		} catch (InputMismatchException e) {
+			String massimoScopertoS = sc.nextLine();
+			massimoScoperto= Double.parseDouble(massimoScopertoS);
+		} catch (NumberFormatException e) {
 			System.err.println("Input non valido, al massimo scoperto verra assegnato il valore di €"+Costante.MASSIMO_SCOPERTO);
-			sc.nextLine();
 			massimoScoperto=Costante.MASSIMO_SCOPERTO;
 		}
 		
@@ -181,7 +180,7 @@ public class BankAccount {
 	 * @param ps
 	 */
 	public void print(PrintStream ps) {
-		ps.print(nomeIntestatario+" "+massimoScoperto+" "+balance+"\n");
+		ps.println(nomeIntestatario+" "+massimoScoperto+" "+balance);
 	}
 
 	private String nomeIntestatario;
