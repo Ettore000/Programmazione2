@@ -13,22 +13,22 @@ public class BancaTester {
 		Banca b=new Banca();
 
 		//apri conto
-		b.apriConto(new BankAccount("Luca", 12000));
+		b.addConto(new BankAccount("Luca", 12000));
 		b.visualizzaContiCorrenti();
 
-		System.out.println(b.calcolaSaldoTotale());
+		System.out.println(b.calcolaSaldoTotaleBanca());
 
-		b.apriConto(new BankAccount("Marco", 25850.24));
-		b.apriConto(new BankAccount("Andrea", 1520.51));
+		b.addConto(new BankAccount("Marco", 25850.24));
+		b.addConto(new BankAccount("Andrea", 1520.51));
 		b.visualizzaContiCorrenti();
 
-		System.out.println(b.calcolaSaldoTotale());
+		System.out.println(b.calcolaSaldoTotaleBanca());
 
 		//chiudi conto
-		b.chiudiConto(b.cercaContoCorrentePerNome("Marco"));//TODO
+		b.removeConto(b.cercaContoCorrentePerNome("Marco"));//TODO
 		b.visualizzaContiCorrenti();
 
-		System.out.println(b.calcolaSaldoTotale());
+		System.out.println(b.calcolaSaldoTotaleBanca());
 		
 		//cerca per nome
 		b.cercaContoCorrentePerNome("Luca").print();

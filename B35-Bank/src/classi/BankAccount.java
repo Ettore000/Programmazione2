@@ -9,7 +9,7 @@ import util.Costante;
 /**
  * Modella un conto corrente bancario
  */
-public class BankAccount {
+public class BankAccount implements Comparable<BankAccount>{
 	/**
 	 * Crea un nuovo conto con bilancio iniziale
 	 * @param nomeIntestatario
@@ -21,7 +21,7 @@ public class BankAccount {
 		this.massimoScoperto=massimoScoperto;
 		this.balance = balance;
 	}
-	
+
 	/**
 	 * Crea un nuovo conto specificando il denaro iniziale
 	 * @param nomeIntestatario
@@ -99,21 +99,21 @@ public class BankAccount {
 			//però in questo modo il programma viene arrestato
 		}
 	}
-	
+
 	/**
 	 * Legge un Conto corrente bancario da tastiera
 	 * @return BankAccount(nomeIntestatario, massimoScoperto, balance)
 	 */
 	public static BankAccount read() {
 		Scanner sc=new Scanner(System.in);
-		
+
 		String nomeIntestatario="";
 		double massimoScoperto=0, balance=0;
-		
+
 		System.out.print("Nome intestatario: ");
 		nomeIntestatario=sc.nextLine();
 		if(nomeIntestatario.equals(""))return null;
-		
+
 		try {
 			System.out.print("Massimo scoperto: ");
 			massimoScoperto = sc.nextDouble();sc.nextLine();
@@ -123,7 +123,7 @@ public class BankAccount {
 			sc.nextLine();
 			massimoScoperto=Costante.MASSIMO_SCOPERTO;
 		}
-		
+
 		try {
 			System.out.print("Bilancio: ");
 			balance=sc.nextDouble();sc.nextLine();
@@ -133,10 +133,10 @@ public class BankAccount {
 			sc.nextLine();
 			balance=0;
 		}
-		
+
 		return new BankAccount(nomeIntestatario, massimoScoperto, balance);
 	}
-	
+
 	/**
 	 * Legge un Conto corrente bancario da file
 	 * @return BankAccount(nomeIntestatario, massimoScoperto, balance)
@@ -144,16 +144,16 @@ public class BankAccount {
 	public static BankAccount read(Scanner sc) {
 		String nomeIntestatario="";
 		double massimoScoperto=0, balance=0;
-		
+
 		if(!sc.hasNext())return null;
 		nomeIntestatario=sc.next();
-		
+
 		if(!sc.hasNext())return null;
 		massimoScoperto=sc.nextDouble();
-		
+
 		if(!sc.hasNext())return null;
 		balance=sc.nextDouble();
-		
+
 		return new BankAccount(nomeIntestatario, massimoScoperto, balance);
 	}
 
@@ -166,7 +166,7 @@ public class BankAccount {
 
 		return stringa;
 	}
-	
+
 	/**
 	 * Visualizza un conto corrente bancario
 	 */
@@ -175,13 +175,32 @@ public class BankAccount {
 		System.out.println("Massimo scoperto: "+massimoScoperto);
 		System.out.println("Bilancio: "+balance);
 	}
-	
+
 	/**
 	 * Scrive su file un conto corrente bancario
 	 * @param ps
 	 */
 	public void print(PrintStream ps) {
 		ps.print(nomeIntestatario+" "+massimoScoperto+" "+balance+"\n");
+	}
+
+	/**
+	 * Confronta due oggetti - ottiene true se il nome dell'intestatario è uguale
+	 * @param ba
+	 * @return
+	 */
+	public boolean equals(BankAccount ba) {
+		if(nomeIntestatario.equals(ba.nomeIntestatario))
+			return true;
+		return false;
+	}
+
+	/**
+	 * Confronta due oggetti - ottiene 0 se l'intestatario è uguale
+	 */
+	@Override
+	public int compareTo(BankAccount ba) {
+		return nomeIntestatario.compareTo(ba.nomeIntestatario);
 	}
 
 	private String nomeIntestatario;

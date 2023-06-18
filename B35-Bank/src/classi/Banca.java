@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Banca: modella una banca che gestisce dei conti correnti "BankAccount"
+ * Modella una banca che gestisce dei conti correnti
+ * @see BankAccount
  */
 public class Banca {
 	/**
@@ -26,7 +27,7 @@ public class Banca {
 	 * Aggiunge un conto corrente alla lista
 	 * @param conto
 	 */
-	public void apriConto(BankAccount conto) {
+	public void addConto(BankAccount conto) {
 		contiCorrenti.add(conto);
 	}
 
@@ -34,7 +35,7 @@ public class Banca {
 	 * Elimina un conto corrente dalla lista
 	 * @param conto
 	 */
-	public void chiudiConto(BankAccount conto) {
+	public void removeConto(BankAccount conto) {
 		contiCorrenti.remove(conto);
 	}
 
@@ -56,7 +57,7 @@ public class Banca {
 	 * Calcola il saldo totale che possiede la banca sommando tutti i conti correnti che gestisce
 	 * @return saldoTotale
 	 */
-	public double calcolaSaldoTotale() {
+	public double calcolaSaldoTotaleBanca() {
 		double saldoTotale=0;
 		for (BankAccount conto : contiCorrenti) {
 			saldoTotale+=conto.getBalance();
@@ -67,7 +68,7 @@ public class Banca {
 	/**
 	 * Visualizza tutti i conti correnti
 	 */
-	public void visualizzaContiCorrenti() {
+	public void print() {
 		for (BankAccount conto : contiCorrenti) {
 			conto.print();
 			System.out.println("--------------------------------");
