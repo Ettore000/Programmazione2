@@ -77,34 +77,54 @@ public class Studente implements Comparable<Studente>{
 	 * Cerca un esame in base a un criterio e al valore cercato
 	 * @param criterio
 	 * @param nomeEsame
+	 * @return Esame
 	 */
-	public void findEsame(String criterio, String valore) {
+	public Esame findEsame(String criterio, String valore) {
 		for (Esame esame : esami) {
-			if(criterio.equalsIgnoreCase("materia") && esame.getMateria().equals(valore)) {
-				System.out.println(esame.toString());
+			if(criterio.equalsIgnoreCase("materia") && esame.getMateria().equalsIgnoreCase(valore)) {
+				return esame;
 			} else if(criterio.equalsIgnoreCase("voto") && esame.getVoto()==Integer.parseInt(valore)) {
-				System.out.println(esame.toString());
-			} else if(criterio.equalsIgnoreCase("matricolaStudente") && esame.getMatricolaStudente().equals(valore)) {
-				System.out.println(esame.toString());
+				return esame;
+			} else if(criterio.equalsIgnoreCase("matricolaStudente") && esame.getMatricolaStudente().equalsIgnoreCase(valore)) {
+				return esame;
 			}
 		}
+		return null;
 	}
 	
 	/**
 	 * Filtra gli esami in base a un criterio
 	 * @param criterio
+	 * @return esamiFiltrati
 	 */
-	public void filterEsami(String criterio) {
-		//TODO
+	public List<Esame> filterEsami(String criterio) {
+		List<Esame> esamiFiltrati=new ArrayList<Esame>();
+		
+		for (Esame esame : esami) {
+			if(criterio.equalsIgnoreCase("materia")) {
+				esamiFiltrati.add(esame);
+			} else if(criterio.equalsIgnoreCase("voto")) {
+				esamiFiltrati.add(esame);
+			} else if(criterio.equalsIgnoreCase("matricolaStudente")) {
+				esamiFiltrati.add(esame);
+			}
+		}
+		return esamiFiltrati;
 	}
 	
 	/**
 	 * Ordina la collezione degli esami in base a un criterio e a un ordine specificato tra ascendente e discendente
 	 * @param criterio
 	 * @param ordine
+	 * @return esamiOrdinati
 	 */
-	public void orderEsami(String criterio, String ordine) {
-		//TODO
+	public List<Esame> orderEsami(String criterio, String ordine) {
+		List<Esame> esamiOrdinati=new ArrayList<Esame>();
+		
+		//TODO come posso implementarlo?
+		//TODO come posso sfruttare il metodo compareTo()?
+		
+		return esamiOrdinati;
 	}
 	
 	/**

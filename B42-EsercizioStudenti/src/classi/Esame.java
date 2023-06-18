@@ -43,6 +43,7 @@ public class Esame implements Comparable<Esame>{
 		return matricolaStudente;
 	}
 	
+	//TODO giusto utilizzare Studente così all'interno di esami?
 	/**
 	 * Ottiene uno studente associato all'esame
 	 * @return studente
