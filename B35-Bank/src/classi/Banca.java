@@ -2,6 +2,7 @@ package classi;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * Modella una banca che gestisce dei conti correnti
@@ -11,9 +12,11 @@ public class Banca {
 	/**
 	 * Crea una banca
 	 */
-	public Banca() {
+	public Banca(Scanner sc) {
 		this.contiCorrenti=new ArrayList<BankAccount>(); //implementazione specifica per la variabile
+	//slide input output, per read7PR LOOP 
 	}
+	
 
 	/**
 	 * Ottiene una lista di conti correnti gestiti dalla banca
