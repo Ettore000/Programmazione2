@@ -34,9 +34,13 @@ public class Registro {
 			esami.add(e); //un esame viene aggiunto alla lista esami
 			e=Esame.read(scEsami);
 		}
-		
 	}
 	
+	/**
+	 * Crea un registro filtrato
+	 * @param studentiFilter
+	 * @param esamiFilter
+	 */
 	private Registro(List<Studente> studentiFilter, List<Esame> esamiFilter) {
 		this.studenti=studentiFilter;
 		this.esami=esamiFilter;
@@ -56,7 +60,7 @@ public class Registro {
 	}
 
 	/**
-	 * Filtra gli esami in base a un criterio
+	 * Filtra gli studenti in base al nome
 	 * @param materia
 	 * @return Registro
 	 */
@@ -72,21 +76,150 @@ public class Registro {
 		}
 		return new Registro(studentiFilter, esamiFilter);
 	}
-
-	//TODO filterEsamiByMatricolaStudente(String matricolaStudente)
-	//TODO filterEsamiByVoto(String voto)
+	
+	/**
+	 * Filtra gli studenti in base al cognome
+	 * @param cognome
+	 * @return Registro
+	 */
+	public Registro filterStudentiByCognome(String cognome) {
+		List<Studente> studentiFilter=new ArrayList<Studente>();
+		List<Esame> esamiFilter=new ArrayList<Esame>();
+		
+		for (Studente studente : studenti) {
+			if(studente.getCognome().equalsIgnoreCase(cognome)) {
+				studentiFilter.add(studente);
+				esamiFilter.addAll(esamiFilter);
+			}
+		}
+		return new Registro(studentiFilter, esamiFilter);
+	}
+	
+	/**
+	 * Filtra gli studenti in base alla matricola
+	 * @param matricola
+	 * @return Registro
+	 */
+	public Registro filterStudentiByMatricola(int matricola) {
+		List<Studente> studentiFilter=new ArrayList<Studente>();
+		List<Esame> esamiFilter=new ArrayList<Esame>();
+		
+		for (Studente studente : studenti) {
+			if(studente.getMatricola()==matricola) {
+				studentiFilter.add(studente);
+				esamiFilter.addAll(esamiFilter);
+			}
+		}
+		return new Registro(studentiFilter, esamiFilter);
+	}
+	
+	/**
+	 * Filtra gli esami in base alla materia
+	 * @param materia
+	 * @return Registro
+	 */
+	public Registro filterEsamiByMateria(String materia) {
+		List<Studente> studentiFilter=new ArrayList<Studente>();
+		List<Esame> esamiFilter=new ArrayList<Esame>();
+		
+		for(Esame esame : esami) {
+			if(esame.getMateria().equalsIgnoreCase(materia)) {
+				esamiFilter.add(esame);
+				studentiFilter.addAll(studentiFilter);
+			}
+		}
+		return new Registro(studentiFilter, esamiFilter);
+	}
+	
+	/**
+	 * Filtra gli esami in base al voto
+	 * @param voto
+	 * @return Registro
+	 */
+	public Registro filterEsamiByVoto(int voto) {
+		List<Studente> studentiFilter=new ArrayList<Studente>();
+		List<Esame> esamiFilter=new ArrayList<Esame>();
+		
+		for (Esame esame : esami) {
+			if(esame.getVoto()==voto) {
+				esamiFilter.add(esame);
+				studentiFilter.addAll(studentiFilter);
+			}
+		}
+		return new Registro(studentiFilter, esamiFilter);
+	}
+	
+	/**
+	 * Filtra gli esami in base alla matricola dello studente segnata nell'esame
+	 * @param matricolaStudente
+	 * @return Registro
+	 */
+	public Registro filterEsamiByMatricolaStudente(int matricolaStudente) {
+		List<Studente> studentiFilter=new ArrayList<Studente>();
+		List<Esame> esamiFilter=new ArrayList<Esame>();
+		
+		for (Esame esame : esami) {
+			if(esame.getMatricolaStudente()==matricolaStudente) {
+				esamiFilter.add(esame);
+				studentiFilter.addAll(studentiFilter);
+			}
+		}
+		return new Registro(studentiFilter, esamiFilter);
+	}
 
 	/**
-	 * Ordina la collezione degli esami in base a un criterio e a un ordine specificato tra ascendente e discendente
-	 * @param criterio
+	 * Ordina gli studenti in base al nome
+	 * @param nome
+	 * @return Registro
+	 */
+	public Registro sortStudentiByNome(String nome) {
+		//TODO 
+	}
+	
+	/**
+	 * Ordina gli studenti in base al cognome
+	 * @param cognome
+	 * @return Registro
+	 */
+	public Registro sortStudentiByCognome(String cognome) {
+		//TODO 
+	}
+	
+	/**
+	 * Ordina gli studenti in base alla matricola
+	 * @param matricola
+	 * @return Registro
+	 */
+	public Registro sortStudentiByMatricola(int matricola) {
+		//TODO 
+	}
+	
+	/**
+	 * Ordina gli esami in base alla materia
+	 * @param materia
 	 * @return Registro
 	 */
 	public Registro sortEsamiByMateria(String materia) {
-		//TODO sorting ascendente
+		//TODO 
 	}
-
-	//TODO sortEsamiByMatricolaStudente(String matricolaStudente)
-	//TODO sortEsamiByVoto(String voto)
+	
+	/**
+	 * Ordina gli esami in base al voto
+	 * @param voto
+	 * @return Registro
+	 */
+	public Registro sortEsamiByMateria(int voto) {
+		//TODO 
+	}
+	
+	/**
+	 * Ordina gli esami in base alla matricola dello studente segnata nell'esame
+	 * @param matricolaStudente
+	 * @return Registro
+	 */
+	public Registro sortEsamiByMateria(int matricolaStudente) {
+		//TODO 
+	}
 
 	/**
 	 * Ottiene la media dei voti degli esami svolti da uno studente
