@@ -17,7 +17,7 @@ public class Studente implements Comparable<Studente>{
 	 * @param cognome
 	 * @param matricola
 	 */
-	public Studente(String nome, String cognome, String matricola) {
+	public Studente(String nome, String cognome, int matricola) {
 		this.nome=nome;
 		this.cognome=cognome;
 		this.matricola=matricola;
@@ -44,7 +44,7 @@ public class Studente implements Comparable<Studente>{
 	 * Ottiene la matricola
 	 * @return matricola
 	 */
-	public String getMatricola() {
+	public int getMatricola() {
 		return matricola;
 	}
 	
@@ -57,13 +57,30 @@ public class Studente implements Comparable<Studente>{
 	}
 	
 	/**
+	 * Aggiunge un esame alla collezione
+	 * @param e
+	 */
+	public void addEsame(Esame e) {
+		esami.add(e);
+	}
+
+	/**
+	 * Rimuove un esame dalla collezione
+	 * @param e
+	 */
+	public void removeEsame(Esame e) {
+		esami.remove(e);
+	}
+	
+	/**
 	 * Legge uno studente da tastiera
 	 * @return Studente(nome, cognome, matricola)
 	 */
 	public static Studente read() {
 		Scanner sc=new Scanner(System.in);
 		
-		String nome="", cognome="", matricola="";
+		String nome="", cognome="", matricolaS="";
+		int matricola=0;
 		
 		System.out.print("Nome: ");
 		nome=sc.nextLine();
@@ -74,8 +91,9 @@ public class Studente implements Comparable<Studente>{
 		if(cognome.equals(""))return null;
 		
 		System.out.print("Matricola: ");
-		matricola=sc.nextLine();
-		if(matricola.equals(""))return null;
+		matricolaS=sc.nextLine();
+		if(matricolaS.equals(""))return null;
+		matricola=Integer.parseInt(matricolaS);
 		
 		return new Studente(nome, cognome, matricola);
 	}
@@ -86,7 +104,8 @@ public class Studente implements Comparable<Studente>{
 	 * @return Studente(nome, cognome, matricola)
 	 */
 	public static Studente read(Scanner sc) {
-		String nome="", cognome="", matricola="";
+		String nome="", cognome="", matricolaS="";
+		int matricola=0;
 		
 		if(!sc.hasNext())return null;
 		nome=sc.next();
@@ -95,24 +114,11 @@ public class Studente implements Comparable<Studente>{
 		cognome=sc.next();
 
 		if(!sc.hasNext())return null;
-		matricola=sc.next();
+		matricolaS=sc.next();
+		matricola=Integer.parseInt(matricolaS);
+		//TODO exception parseException
 		
 		return new Studente(nome, cognome, matricola);
-	}
-	
-	/**
-	 * Visualizza uno studente
-	 */
-	public void print() {
-		System.out.println(nome+" "+cognome+" "+matricola);
-	}
-	
-	/**
-	 * Scrive uno studente su file
-	 * @param PrintStream
-	 */
-	public void print(PrintStream ps) {
-		ps.println(nome+" "+cognome+" "+matricola);
 	}
 	
 	/**
@@ -124,7 +130,7 @@ public class Studente implements Comparable<Studente>{
 		final int prime = 31; //i numeri primi aiutano a non avere collisioni
 		int result = 1;
 		//possiamo scrivere solo matricola in quanto l'oggetto rappresentato da matricola è già univoco
-		result = prime * result + ((matricola == null) ? 0 : matricola.hashCode());
+		result = prime * result + matricola;
 		return result;
 	}
 
@@ -136,7 +142,7 @@ public class Studente implements Comparable<Studente>{
 	 */
 	public boolean equals(Studente s) {
 		//in questo caso sapendo la matricola possiamo implementare solo un if
-		if(matricola.equals(s.matricola))
+		if(matricola==s.matricola)
 			return true;
 		return false;
 	}
@@ -148,11 +154,27 @@ public class Studente implements Comparable<Studente>{
 	 */
 	@Override
 	public int compareTo(Studente s) {
+		//TODO correggere
 		return matricola.compareTo(s.matricola); // se sono uguali restituisce zero
 	}
 
 	/**
-	 * Riassume uno studente
+	 * Visualizza su schermo uno studente
+	 */
+	public void print() {
+		System.out.println(nome+" "+cognome+" "+matricola);
+	}
+
+	/**
+	 * Scrive uno studente su file
+	 * @param PrintStream
+	 */
+	public void print(PrintStream ps) {
+		ps.println(nome+" "+cognome+" "+matricola);
+	}
+
+	/**
+	 * Converte uno studente in una stringa
 	 */
 	@Override
 	public String toString() {
@@ -160,6 +182,7 @@ public class Studente implements Comparable<Studente>{
 				+ "]";
 	}
 
-	private String nome, cognome, matricola;
+	private String nome, cognome;
+	private int matricola;
 	private List<Esame> esami;
 }
