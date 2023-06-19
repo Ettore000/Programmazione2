@@ -17,6 +17,7 @@ public class Esame implements Comparable<Esame>{
 		this.materia=materia;
 		this.voto=voto;
 		this.matricolaStudente=matricolaStudente;
+		this.studente=null;
 	}
 
 	/**
@@ -101,7 +102,7 @@ public class Esame implements Comparable<Esame>{
 	}
 
 	/**
-	 * Visualizza un esame
+	 * Visualizza su monitor un esame
 	 */
 	public void print() {
 		System.out.println(materia+" "+voto+" "+matricolaStudente);
@@ -127,6 +128,18 @@ public class Esame implements Comparable<Esame>{
 		return false;
 	}
 
+	/**
+	 * Identifica un oggetto con un intero univoco
+	 * @return int
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((matricolaStudente == null) ? 0 : matricolaStudente.hashCode());
+		return result;
+	}
+
 	//TODO giusto equals all'interno?
 	/**
 	 * Confronta due oggetti - ottiene informazioni sull'ordinamento dei due oggetti
@@ -136,9 +149,9 @@ public class Esame implements Comparable<Esame>{
 	@Override
 	public int compareTo(Esame e) {
 		/*
-		 * Se le materie sono diverse, restituisce il risultato del confronto tra le stringhe materia dei due oggetti
-		 * 
-		 * Questo permette di ordinare gli esami in base alla materia in modo crescente o decrescente
+		  Se le materie sono diverse, restituisce il risultato del confronto tra le stringhe materia dei due oggetti
+		  
+		  Questo permette di ordinare gli esami in base alla materia in modo crescente o decrescente
 		 */
 		if(!materia.equals(e.materia))return materia.compareTo(e.materia);
 		//Altrimenti restituisce il risultato del confronto tra le stringhe matricolaStudente
@@ -146,7 +159,8 @@ public class Esame implements Comparable<Esame>{
 	}
 
 	/**
-	 * Riassume un esame
+	 * Converte esame... TODO
+	 * @return String
 	 */
 	@Override
 	public String toString() {

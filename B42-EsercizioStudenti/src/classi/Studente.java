@@ -3,7 +3,6 @@ package classi;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Scanner;
 
 import util.Costante;
@@ -239,7 +238,7 @@ public class Studente implements Comparable<Studente>{
 	 */
 	@Override
 	public int hashCode() {
-		final int prime = 31;
+		final int prime = 31; //i numeri primi aiutano a non avere collisioni
 		int result = 1;
 		//possiamo scrivere solo matricola in quanto l'oggetto rappresentato da matricola è già univoco
 		result = prime * result + ((matricola == null) ? 0 : matricola.hashCode());
