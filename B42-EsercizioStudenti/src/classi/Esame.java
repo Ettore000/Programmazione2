@@ -159,7 +159,7 @@ public class Esame implements Comparable<Esame>{
 	}
 
 	/**
-	 * Converte esame... TODO
+	 * Converte un esame in una stringa
 	 * @return String
 	 */
 	@Override
@@ -169,5 +169,5 @@ public class Esame implements Comparable<Esame>{
 
 	private String materia, matricolaStudente;
 	private int voto;
-	private Studente studente; //TODO come si inizializza?
+	private Studente studente;
 }
