@@ -71,7 +71,12 @@ public class Registro {
 		for (Studente studente : studenti) {
 			if(studente.getNome().equalsIgnoreCase(nome)) {
 				studentiFilter.add(studente);
-				esamiFilter.addAll(esami);
+				//TODO questo era sbagliato? -> esamiFilter.addAll(esami);
+				for (Esame esame : esami) {
+					if(esame.getStudente().equals(studente)) {
+						esamiFilter.add(esame);
+					}
+				}
 			}
 		}
 		return new Registro(studentiFilter, esamiFilter);
@@ -89,7 +94,11 @@ public class Registro {
 		for (Studente studente : studenti) {
 			if(studente.getCognome().equalsIgnoreCase(cognome)) {
 				studentiFilter.add(studente);
-				esamiFilter.addAll(esamiFilter);
+				for (Esame esame : esami) {
+					if(esame.getStudente().equals(studente)) {
+						esamiFilter.add(esame);
+					}
+				}
 			}
 		}
 		return new Registro(studentiFilter, esamiFilter);
@@ -107,7 +116,11 @@ public class Registro {
 		for (Studente studente : studenti) {
 			if(studente.getMatricola()==matricola) {
 				studentiFilter.add(studente);
-				esamiFilter.addAll(esamiFilter);
+				for (Esame esame : esami) {
+					if(esame.getStudente().equals(studente)) {
+						esamiFilter.add(esame);
+					}
+				}
 			}
 		}
 		return new Registro(studentiFilter, esamiFilter);
@@ -125,7 +138,7 @@ public class Registro {
 		for(Esame esame : esami) {
 			if(esame.getMateria().equalsIgnoreCase(materia)) {
 				esamiFilter.add(esame);
-				studentiFilter.addAll(studentiFilter);
+				studentiFilter.addAll(studenti); //TODO come si corregge?
 			}
 		}
 		return new Registro(studentiFilter, esamiFilter);
@@ -143,7 +156,7 @@ public class Registro {
 		for (Esame esame : esami) {
 			if(esame.getVoto()==voto) {
 				esamiFilter.add(esame);
-				studentiFilter.addAll(studentiFilter);
+				studentiFilter.addAll(studenti);
 			}
 		}
 		return new Registro(studentiFilter, esamiFilter);
@@ -161,7 +174,7 @@ public class Registro {
 		for (Esame esame : esami) {
 			if(esame.getMatricolaStudente()==matricolaStudente) {
 				esamiFilter.add(esame);
-				studentiFilter.addAll(studentiFilter);
+				studentiFilter.addAll(studenti);
 			}
 		}
 		return new Registro(studentiFilter, esamiFilter);
