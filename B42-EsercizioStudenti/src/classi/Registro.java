@@ -1,6 +1,8 @@
 package classi;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -9,7 +11,7 @@ import util.Costante;
 /**
  * Modella un registro contenente studenti e esami
  */
-public class Registro {
+public class Registro implements Comparator<Studente> {
 	/**
 	 * Crea un registro
 	 * @param scStudente
@@ -325,4 +327,9 @@ public class Registro {
 
 	private List<Studente> studenti;
 	private List<Esame> esami;
+	@Override
+	public int compare(Studente o1, Studente o2) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

@@ -3,6 +3,8 @@ package classi;
 import java.io.PrintStream;
 import java.util.Scanner;
 
+import util.Costante;
+
 /**
  * Modella un esame
  */
@@ -34,6 +36,14 @@ public class Esame implements Comparable<Esame>{
 	 */
 	public int getVoto() {
 		return voto;
+	}
+
+	/**
+	 * Modifica il voto di uno studente associato a un esame
+	 * @param voto
+	 */
+	public void setVoto(int voto) {
+		this.voto = voto;
 	}
 
 	/**
@@ -74,16 +84,30 @@ public class Esame implements Comparable<Esame>{
 		materia=sc.nextLine();
 		if(materia.equals(""))return null;
 		
-		System.out.print("Voto: ");
-		votoS=sc.nextLine();
-		if(votoS.equals(""))return null;
-		voto=Integer.parseInt(votoS);
-
-		System.out.print("Matricola studente: ");
-		matricolaStudenteS=sc.nextLine();
-		if(matricolaStudenteS.equals(""))return null;
-		matricolaStudente=Integer.parseInt(matricolaStudenteS);
-
+		
+		try {
+			System.out.print("Voto: ");
+			votoS = sc.nextLine();
+			if (votoS.equals(""))
+				return null;
+			voto = Integer.parseInt(votoS);
+		} catch (NumberFormatException e) {
+			System.err.println("Voto inserito non conforme, al voto verrà assegnato il valore "+Costante.VOTO_NON_VALIDO);
+			System.err.println("Modificarlo il prima possibile");
+			voto=Costante.VOTO_NON_VALIDO;//TODO giusto?
+		}
+		
+		try {
+			System.out.print("Matricola studente: ");
+			matricolaStudenteS = sc.nextLine();
+			if (matricolaStudenteS.equals(""))
+				return null;
+			matricolaStudente = Integer.parseInt(matricolaStudenteS);
+		} catch (Exception e) {
+			System.err.println("Matricola studente inserita non conforme, l'inserimento dell'esame verrà annullato");
+			return null;//TODO giusto?
+		}
+		
 		return new Esame(materia, voto, matricolaStudente);
 	}
 
@@ -142,40 +166,6 @@ public class Esame implements Comparable<Esame>{
 	 */
 	@Override
 	public int compareTo(Esame e) {
-		return compareEsameByMateria(e);
-	}
-	
-	/**
-	 * Confronta due materie e restituisce l'ordinamento
-	 * @param s
-	 * @return int
-	 */
-	public int compareEsameByMateria(Esame e) {
-		if(!materia.equals(e.getMateria()))
-			return materia.compareTo(e.getMateria());
-		return compareEsameByVoto(e);
-	}
-	
-	/**
-	 * Confronta due voti e restituisce l'ordinamento
-	 * @param s
-	 * @return int
-	 */
-	public int compareEsameByVoto(Esame e) {
-		String votoS=String.valueOf(voto);
-		String altroVotoS=String.valueOf(e.getVoto());
-		
-		if(!votoS.equals(altroVotoS))
-			return votoS.compareTo(altroVotoS);
-		return compareEsameByMatricolaStudente(e);
-	}
-	
-	/**
-	 * Confronta due matricole degli studenti e restituisce l'ordinamento
-	 * @param s
-	 * @return int
-	 */
-	public int compareEsameByMatricolaStudente(Esame e) {
 		String matricolaStudenteS=String.valueOf(matricolaStudente);
 		String altraMatricolaStudente=String.valueOf(e.getMatricolaStudente());
 		

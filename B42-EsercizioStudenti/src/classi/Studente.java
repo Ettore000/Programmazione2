@@ -90,10 +90,16 @@ public class Studente implements Comparable<Studente>{
 		cognome=sc.nextLine();
 		if(cognome.equals(""))return null;
 		
-		System.out.print("Matricola: ");
-		matricolaS=sc.nextLine();
-		if(matricolaS.equals(""))return null;
-		matricola=Integer.parseInt(matricolaS);
+		try {
+			System.out.print("Matricola: ");
+			matricolaS = sc.nextLine();
+			if (matricolaS.equals(""))
+				return null;
+			matricola = Integer.parseInt(matricolaS);
+		} catch (NumberFormatException e) {
+			System.err.println("Matricola inserita non conforme, l'inserimento dello studente verrà annullato");
+			return null;
+		}
 		
 		return new Studente(nome, cognome, matricola);
 	}
@@ -154,37 +160,6 @@ public class Studente implements Comparable<Studente>{
 	 */
 	@Override
 	public int compareTo(Studente s) {
-		return compareStudenteByNome(s);
-	}
-	
-	/**
-	 * Confronta due nomi e restituisce l'ordinamento
-	 * @param s
-	 * @return int
-	 */
-	public int compareStudenteByNome(Studente s) {
-		if(!nome.equals(s.getNome()))
-			return nome.compareTo(s.getNome());
-		return compareStudenteByCognome(s);
-	}
-	
-	/**
-	 * Confronta due cognomi e restituisce l'ordinamento
-	 * @param s
-	 * @return int
-	 */
-	public int compareStudenteByCognome(Studente s) {
-		if(!cognome.equals(s.getCognome()))
-			return cognome.compareTo(s.getCognome());
-		return compareStudenteByMatricola(s);
-	}
-	
-	/**
-	 * Confronta due matricole e restituisce l'ordinamento
-	 * @param s
-	 * @return int
-	 */
-	public int compareStudenteByMatricola(Studente s) {
 		String matricolaS=String.valueOf(matricola);
 		String altraMatricolaS=String.valueOf(s.getMatricola());
 		
