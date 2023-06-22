@@ -73,16 +73,16 @@ public class Esame implements Comparable<Esame>{
 		System.out.print("Materia: ");
 		materia=sc.nextLine();
 		if(materia.equals(""))return null;
+		
+		System.out.print("Voto: ");
+		votoS=sc.nextLine();
+		if(votoS.equals(""))return null;
+		voto=Integer.parseInt(votoS);
 
 		System.out.print("Matricola studente: ");
 		matricolaStudenteS=sc.nextLine();
 		if(matricolaStudenteS.equals(""))return null;
 		matricolaStudente=Integer.parseInt(matricolaStudenteS);
-
-		System.out.print("Voto: ");
-		votoS=sc.nextLine();
-		if(votoS.equals(""))return null;
-		voto=Integer.parseInt(votoS);
 
 		return new Esame(materia, voto, matricolaStudente);
 	}
@@ -98,14 +98,14 @@ public class Esame implements Comparable<Esame>{
 
 		if(!sc.hasNext())return null;
 		materia=sc.next();
+		
+		if(!sc.hasNext())return null;
+		votoS=sc.next();
+		voto=Integer.parseInt(votoS);
 
 		if(!sc.hasNext())return null;
 		matricolaStudenteS=sc.next();
 		matricolaStudente=Integer.parseInt(matricolaStudenteS);
-
-		if(!sc.hasNext())return null;
-		votoS=sc.next();
-		voto=Integer.parseInt(votoS);
 
 		return new Esame(materia, voto, matricolaStudente);
 	}
@@ -136,21 +136,50 @@ public class Esame implements Comparable<Esame>{
 	}
 
 	/**
-	 * Confronta due oggetti - ottiene informazioni sull'ordinamento dei due oggetti
+	 * Confronta due oggetti resituendo l'ordinamento
 	 * @param e
 	 * @return int
 	 */
 	@Override
 	public int compareTo(Esame e) {
-		/*
-		  Se le materie sono diverse, restituisce il risultato del confronto tra le stringhe materia dei due oggetti
-		  
-		  Questo permette di ordinare gli esami in base alla materia in modo crescente o decrescente
-		 */
-		if(!materia.equals(e.materia))
-			return materia.compareTo(e.materia);
-		//Altrimenti restituisce il risultato del confronto tra le stringhe matricolaStudente
-		return matricolaStudente.compareTo(e.matricolaStudente);//TODO come si fa? - implementa materia
+		return compareEsameByMateria(e);
+	}
+	
+	/**
+	 * Confronta due materie e restituisce l'ordinamento
+	 * @param s
+	 * @return int
+	 */
+	public int compareEsameByMateria(Esame e) {
+		if(!materia.equals(e.getMateria()))
+			return materia.compareTo(e.getMateria());
+		return compareEsameByVoto(e);
+	}
+	
+	/**
+	 * Confronta due voti e restituisce l'ordinamento
+	 * @param s
+	 * @return int
+	 */
+	public int compareEsameByVoto(Esame e) {
+		String votoS=String.valueOf(voto);
+		String altroVotoS=String.valueOf(e.getVoto());
+		
+		if(!votoS.equals(altroVotoS))
+			return votoS.compareTo(altroVotoS);
+		return compareEsameByMatricolaStudente(e);
+	}
+	
+	/**
+	 * Confronta due matricole degli studenti e restituisce l'ordinamento
+	 * @param s
+	 * @return int
+	 */
+	public int compareEsameByMatricolaStudente(Esame e) {
+		String matricolaStudenteS=String.valueOf(matricolaStudente);
+		String altraMatricolaStudente=String.valueOf(e.getMatricolaStudente());
+		
+		return matricolaStudenteS.compareTo(altraMatricolaStudente);
 	}
 
 	/**

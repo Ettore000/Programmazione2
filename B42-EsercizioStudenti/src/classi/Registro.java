@@ -185,8 +185,8 @@ public class Registro {
 	 * @param nome
 	 * @return Registro
 	 */
-	public Registro sortStudentiByNome(String nome) {
-		//TODO 
+	public Registro sortStudentiByNome() {
+		//TODO
 	}
 	
 	/**
@@ -194,7 +194,7 @@ public class Registro {
 	 * @param cognome
 	 * @return Registro
 	 */
-	public Registro sortStudentiByCognome(String cognome) {
+	public Registro sortStudentiByCognome() {
 		//TODO 
 	}
 	
@@ -203,8 +203,22 @@ public class Registro {
 	 * @param matricola
 	 * @return Registro
 	 */
-	public Registro sortStudentiByMatricola(int matricola) {
-		//TODO 
+	public Registro sortStudentiByMatricola(Studente s) {
+		List<Studente> studentiSort=new ArrayList<Studente>();
+		List<Esame> esamiSort=new ArrayList<Esame>();
+		
+		for (Studente studente : studenti) {
+			if(studente.compareStudenteByMatricola(s)<0) {
+				studentiSort.add(studente);
+				for (Esame esame : esami) {
+					if(esame.getStudente().equals(studente)) {
+						esamiSort.add(esame);
+						//TODO
+					}
+				}
+			}
+		}
+		return new Registro(studentiSort, esamiSort);
 	}
 	
 	/**

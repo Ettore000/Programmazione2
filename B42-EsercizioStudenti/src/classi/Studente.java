@@ -148,14 +148,48 @@ public class Studente implements Comparable<Studente>{
 	}
 	
 	/**
-	 * Confronta due oggetti - ottiene informazioni circa l'ordinamento degli oggetti
+	 * Confronta due oggetti restituendo l'ordinamento
 	 * @param s
 	 * @return int
 	 */
 	@Override
 	public int compareTo(Studente s) {
-		//TODO correggere
-		return matricola.compareTo(s.matricola); // se sono uguali restituisce zero
+		return compareStudenteByNome(s);
+	}
+	
+	/**
+	 * Confronta due nomi e restituisce l'ordinamento
+	 * @param s
+	 * @return int
+	 */
+	public int compareStudenteByNome(Studente s) {
+		if(!nome.equals(s.getNome()))
+			return nome.compareTo(s.getNome());
+		return compareStudenteByCognome(s);
+	}
+	
+	/**
+	 * Confronta due cognomi e restituisce l'ordinamento
+	 * @param s
+	 * @return int
+	 */
+	public int compareStudenteByCognome(Studente s) {
+		if(!cognome.equals(s.getCognome()))
+			return cognome.compareTo(s.getCognome());
+		return compareStudenteByMatricola(s);
+	}
+	
+	/**
+	 * Confronta due matricole e restituisce l'ordinamento
+	 * @param s
+	 * @return int
+	 */
+	public int compareStudenteByMatricola(Studente s) {
+		String matricolaS=String.valueOf(matricola);
+		String altraMatricolaS=String.valueOf(s.getMatricola());
+		
+		//nessuna condizione, la matricola è sempre univoca
+		return matricolaS.compareTo(altraMatricolaS);
 	}
 
 	/**
