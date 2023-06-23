@@ -8,7 +8,8 @@ import java.util.Scanner;
 import java.util.TreeSet;
 
 import util.Costante;
-import util.EsameComparatorByMateria;
+import util.EsameComparator;
+import util.StudenteComparator;
 
 /**
  * Modella un registro contenente studenti e esami
@@ -172,66 +173,41 @@ public class Registro {
 	}
 
 	/**
-	 * Ordina gli studenti in base al nome
-	 * @param nome
-	 * @return Registro
-	 */
-	public void sortStudentiByNome() {
-		//TODO
-	}
-
-	/**
 	 * Ordina gli studenti in base al cognome
-	 * @param cognome
-	 * @return Registro
 	 */
 	public void sortStudentiByCognome() {
-		//TODO 
+		Comparator<Studente> compStudente=new StudenteComparator();
+		TreeSet<Studente> treeStudenti=new TreeSet<Studente>(compStudente);
+		
+		for (Studente studente : studenti) {
+			treeStudenti.add(studente);
+		}
+		for (Studente studente : treeStudenti) {
+			studente.print();
+		}
 	}
-
+	
 	/**
-	 * Ordina gli studenti in base alla matricola
-	 * @param matricola
-	 * @return Registro
+	 * Ordina gli studenti in base al numero di esami superati
 	 */
-	public void sortStudentiByMatricola() {
-		//TODO
+	public void sortStudentiByNumeroEsamiSuperati() {
+		//TODO bisogna implementare un metodo che conta il numero degli esami direttamente su Studente
 	}
 
 	/**
-	 * Ordina gli esami in base alla materia
-	 * @param materia
-	 * @return Registro
+	 * Ordina gli esami in base alla materia, al voto e alla matricola degli studenti
 	 */
 	public void sortEsamiByMateria() {
-		Comparator<Esame> compEsame = new EsameComparatorByMateria();
+		Comparator<Esame> compEsame = new EsameComparator();
 		
-		TreeSet<Esame> treeEsame = new TreeSet<Esame>(compEsame);
+		TreeSet<Esame> treeEsami = new TreeSet<Esame>(compEsame);
 		
 		for(Esame esame : esami) {
-			treeEsame.add(esame);
+			treeEsami.add(esame);
 		}
-		for(Esame esame : treeEsame) {
+		for(Esame esame : treeEsami) {
 			esame.print();
 		}
-	}
-
-	/**
-	 * Ordina gli esami in base al voto
-	 * @param voto
-	 * @return Registro
-	 */
-	public void sortEsamiByVoto() {
-		//TODO 
-	}
-
-	/**
-	 * Ordina gli esami in base alla matricola dello studente segnata nell'esame
-	 * @param matricolaStudente
-	 * @return Registro
-	 */
-	public void sortEsamiByStudente() {
-		//TODO 
 	}
 
 	/**
