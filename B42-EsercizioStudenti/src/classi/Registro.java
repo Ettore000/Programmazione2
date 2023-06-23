@@ -10,6 +10,7 @@ import java.util.TreeSet;
 import util.Costante;
 import util.EsameComparator;
 import util.StudenteComparator;
+import util.StudenteComparatorByNumeroEsami;
 
 /**
  * Modella un registro contenente studenti e esami
@@ -191,7 +192,15 @@ public class Registro {
 	 * Ordina gli studenti in base al numero di esami superati
 	 */
 	public void sortStudentiByNumeroEsamiSuperati() {
-		//TODO bisogna implementare un metodo che conta il numero degli esami direttamente su Studente
+		Comparator<Studente> compStudente=new StudenteComparatorByNumeroEsami();
+		TreeSet<Studente> treeStudenti=new TreeSet<Studente>(compStudente);
+		
+		for (Studente studente : studenti) {
+			treeStudenti.add(studente);
+		}
+		for (Studente studente : treeStudenti) {
+			studente.print();
+		}
 	}
 
 	/**
