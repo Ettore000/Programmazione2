@@ -133,7 +133,7 @@ public class Studente implements Comparable<Studente>{
 	 */
 	public boolean equals(Studente s) {
 		//in questo caso sapendo la matricola possiamo implementare solo un if
-		if(matricola==s.matricola)
+		if(matricola.equals(s.matricola))
 			return true;
 		return false;
 	}
@@ -145,13 +145,13 @@ public class Studente implements Comparable<Studente>{
 	 */
 	@Override
 	public int compareTo(Studente s) {
-		if(!nome.equalsIgnoreCase(nome) ) {//TODO prima cognome
+		if(!cognome.equalsIgnoreCase(s.getCognome())) {
+			return cognome.compareToIgnoreCase(s.getCognome());
+		} else if(!nome.equalsIgnoreCase(s.getNome())) {
 			return nome.compareToIgnoreCase(s.getNome());
-		} else if(!cognome.equalsIgnoreCase(s.getCognome())) {
-			return cognome.compareToIgnoreCase(s.getCognome()); //TODO giusto?
 		}
 		
-		return matricola.compareTo(s.getMatricola());
+		return matricola.compareToIgnoreCase(s.getMatricola());
 	}
 
 	/**

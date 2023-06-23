@@ -93,11 +93,7 @@ public class Registro {
 		for (Studente studente : studenti) {
 			if(studente.getCognome().equalsIgnoreCase(cognome)) {
 				studentiFilter.add(studente);
-				for (Esame esame : esami) {
-					if(esame.getStudente().equals(studente)) {
-						esamiFilter.add(esame);
-					}
-				}
+				esamiFilter.addAll(studente.getEsami());
 			}
 		}
 		return new Registro(studentiFilter, esamiFilter);
@@ -115,11 +111,7 @@ public class Registro {
 		for (Studente studente : studenti) {
 			if(studente.getMatricola().equals(matricola)) {
 				studentiFilter.add(studente);
-				for (Esame esame : esami) {
-					if(esame.getStudente().equals(studente)) {
-						esamiFilter.add(esame);
-					}
-				}
+				esamiFilter.addAll(studente.getEsami());
 			}
 		}
 		return new Registro(studentiFilter, esamiFilter);
@@ -155,11 +147,7 @@ public class Registro {
 		for (Esame esame : esami) {
 			if(esame.getVoto()==voto) {
 				esamiFilter.add(esame);
-				for (Studente studente : studenti) {
-					if (studente.getMatricola()==esame.getMatricolaStudente()) {
-						studentiFilter.add(studente);
-					}
-				}
+				studentiFilter.add(esame.getStudente());
 			}
 		}
 		return new Registro(studentiFilter, esamiFilter);
@@ -177,11 +165,7 @@ public class Registro {
 		for (Esame esame : esami) {
 			if(esame.getMatricolaStudente().equals(matricolaStudente)) {
 				esamiFilter.add(esame);
-				for (Studente studente : studenti) {
-					if (studente.getMatricola()==esame.getMatricolaStudente()) {
-						studentiFilter.add(studente);
-					}
-				}
+				studentiFilter.add(esame.getStudente());
 			}
 		}
 		return new Registro(studentiFilter, esamiFilter);
@@ -211,21 +195,7 @@ public class Registro {
 	 * @return Registro
 	 */
 	public Registro sortStudentiByMatricola(Studente s) {
-		List<Studente> studentiSort=new ArrayList<Studente>();
-		List<Esame> esamiSort=new ArrayList<Esame>();
-
-		for (Studente studente : studenti) {
-			if(studente.compareStudenteByMatricola(s)<0) {
-				studentiSort.add(studente);
-				for (Esame esame : esami) {
-					if(esame.getStudente().equals(studente)) {
-						esamiSort.add(esame);
-						//TODO
-					}
-				}
-			}
-		}
-		return new Registro(studentiSort, esamiSort);
+		//TODO
 	}
 
 	/**

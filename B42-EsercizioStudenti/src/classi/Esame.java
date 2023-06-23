@@ -92,9 +92,9 @@ public class Esame implements Comparable<Esame>{
 			votoS = sc.nextLine();
 			if (votoS.equals(""))return null;
 			voto = Integer.parseInt(votoS);
-			if(voto<18) {
+			if(voto<Costante.VOTO_MINIMO) {
 				throw new VotoOltreIlMinimoException("Il voto inserito va oltre il minimo consentito, l'inserimento dell'esame verra' annullato");
-			} else if(voto>30) {
+			} else if(voto>Costante.VOTO_MASSIMO) {
 				throw new VotoOltreIlMassimoException("Il voto inserito va oltre il massimo consentito, l'inserimento dell'esame verra' annullato");
 			}
 		} catch (NumberFormatException e) {
