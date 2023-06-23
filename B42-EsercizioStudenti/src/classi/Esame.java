@@ -93,12 +93,13 @@ public class Esame implements Comparable<Esame>{
 			if (votoS.equals(""))return null;
 			voto = Integer.parseInt(votoS);
 			if(voto<18) {
-				throw new VotoOltreIlMinimoException("Il voto inserito va oltre il minimo consentito, al voto non verra' assegnato nessun valore");
+				throw new VotoOltreIlMinimoException("Il voto inserito va oltre il minimo consentito, l'inserimento dell'esame verra' annullato");
 			} else if(voto>30) {
-				throw new VotoOltreIlMassimoException("Il voto inserito va oltre il massimo consentito, al voto non verra' assegnato nessun valore");
+				throw new VotoOltreIlMassimoException("Il voto inserito va oltre il massimo consentito, l'inserimento dell'esame verra' annullato");
 			}
 		} catch (NumberFormatException e) {
-			System.err.println("Voto inserito non conforme, al voto non verra' assegnato nessun valore");
+			System.err.println("Voto inserito non conforme, l'inserimento dell'esame verra' annullato");
+			return null;
 		}
 
 		System.out.print("Matricola studente: ");
@@ -120,9 +121,19 @@ public class Esame implements Comparable<Esame>{
 		if(!sc.hasNext())return null;
 		materia=sc.next();
 
-		if(!sc.hasNext())return null;
-		votoS=sc.next();
-		voto=Integer.parseInt(votoS);
+		try {
+			if(!sc.hasNext())return null;
+			votoS=sc.next();
+			voto=Integer.parseInt(votoS);
+			if(voto<18) {
+				throw new VotoOltreIlMinimoException("Il voto letto va oltre il minimo consentito, la lettura dell'esame verra' annullata");
+			} else if(voto>30) {
+				throw new VotoOltreIlMassimoException("Il voto letto va oltre il massimo consentito, la lettura dell'esame verra' annullata");
+			}
+		} catch (NumberFormatException e) {
+			System.err.println("Voto letto non conforme, la lettura dell'esame verra' annullata");
+			return null;
+		}
 
 		if(!sc.hasNext())return null;
 		matricolaStudente=sc.next();
@@ -149,9 +160,9 @@ public class Esame implements Comparable<Esame>{
 	 * @param e
 	 * @return boolean
 	 */
-	public boolean equals(Esame e) {//TODO prima la matricola
-		if(materia.equals(e.materia))
-			if(matricolaStudente.equals(e.getMatricolaStudente()))
+	public boolean equals(Esame e) {
+		if(matricolaStudente.equals(e.getMatricolaStudente()))
+			if(materia.equals(e.getMateria()))
 				return true;
 		return false;
 	}
@@ -163,10 +174,9 @@ public class Esame implements Comparable<Esame>{
 	 */
 	@Override
 	public int compareTo(Esame e) {
-		if(!materia.equalsIgnoreCase(e.getMateria())) {
-			return materia.compareToIgnoreCase(e.getMateria());
-		}
-		return matricolaStudente.compareToIgnoreCase(e.getMatricolaStudente());
+		if(!matricolaStudente.equalsIgnoreCase(e.getMatricolaStudente()))
+			return matricolaStudente.compareToIgnoreCase(e.getMatricolaStudente());
+		return materia.compareToIgnoreCase(e.getMateria());
 	}
 
 	/**
