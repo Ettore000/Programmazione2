@@ -17,13 +17,13 @@ public class Studente implements Comparable<Studente>{
 	 * @param cognome
 	 * @param matricola
 	 */
-	public Studente(String nome, String cognome, int matricola) {
+	public Studente(String nome, String cognome, String matricola) {
 		this.nome=nome;
 		this.cognome=cognome;
 		this.matricola=matricola;
 		this.esami=new ArrayList<Esame>();
 	}
-	
+
 	/**
 	 * Ottiene il nome
 	 * @return nome
@@ -31,7 +31,7 @@ public class Studente implements Comparable<Studente>{
 	public String getNome() {
 		return nome;
 	}
-	
+
 	/**
 	 * Ottiene il cognome
 	 * @return cognome
@@ -39,15 +39,15 @@ public class Studente implements Comparable<Studente>{
 	public String getCognome() {
 		return cognome;
 	}
-	
+
 	/**
 	 * Ottiene la matricola
 	 * @return matricola
 	 */
-	public int getMatricola() {
+	public String getMatricola() {
 		return matricola;
 	}
-	
+
 	/**
 	 * Ottiene una lista di esami svolti dallo studente
 	 * @return esami
@@ -55,7 +55,7 @@ public class Studente implements Comparable<Studente>{
 	public List<Esame> getEsami() {
 		return esami;
 	}
-	
+
 	/**
 	 * Aggiunge un esame alla collezione
 	 * @param e
@@ -71,48 +71,39 @@ public class Studente implements Comparable<Studente>{
 	public void removeEsame(Esame e) {
 		esami.remove(e);
 	}
-	
+
 	/**
 	 * Legge uno studente da tastiera
 	 * @return Studente(nome, cognome, matricola)
 	 */
 	public static Studente read() {
 		Scanner sc=new Scanner(System.in);
-		
-		String nome="", cognome="", matricolaS="";
-		int matricola=0;
-		
+
+		String nome="", cognome="", matricola="";
+
 		System.out.print("Nome: ");
 		nome=sc.nextLine();
 		if(nome.equals(""))return null;
-		
+
 		System.out.print("Cognome: ");
 		cognome=sc.nextLine();
 		if(cognome.equals(""))return null;
-		
-		try {
-			System.out.print("Matricola: ");
-			matricolaS = sc.nextLine();
-			if (matricolaS.equals(""))
-				return null;
-			matricola = Integer.parseInt(matricolaS);
-		} catch (NumberFormatException e) {
-			System.err.println("Matricola inserita non conforme, l'inserimento dello studente verrà annullato");
-			return null;
-		}
-		
+
+		System.out.print("Matricola: ");
+		matricola = sc.nextLine();
+		if (matricola.equals(""))return null;
+
 		return new Studente(nome, cognome, matricola);
 	}
-	
+
 	/**
 	 * Legge uno studente da file
 	 * @param sc
 	 * @return Studente(nome, cognome, matricola)
 	 */
 	public static Studente read(Scanner sc) {
-		String nome="", cognome="", matricolaS="";
-		int matricola=0;
-		
+		String nome="", cognome="", matricola="";
+
 		if(!sc.hasNext())return null;
 		nome=sc.next();
 
@@ -120,13 +111,11 @@ public class Studente implements Comparable<Studente>{
 		cognome=sc.next();
 
 		if(!sc.hasNext())return null;
-		matricolaS=sc.next();
-		matricola=Integer.parseInt(matricolaS);
-		//TODO exception parseException
-		
+		matricola=sc.next();
+
 		return new Studente(nome, cognome, matricola);
 	}
-	
+
 	/**
 	 * Identifica un oggetto con un intero univoco
 	 * @return int
@@ -134,9 +123,10 @@ public class Studente implements Comparable<Studente>{
 	@Override
 	public int hashCode() {
 		final int prime = Costante.NUMERO_PRIMO; //i numeri primi aiutano a non avere collisioni
-		int result = matricola;
+		int result = Costante.INTERO_UNITARIO;
 		//possiamo scrivere solo matricola in quanto l'oggetto rappresentato da matricola è già univoco
-		result = prime * result + matricola;
+		result = prime * result + matricola.hashCode();
+		
 		return result;
 	}
 
@@ -152,7 +142,7 @@ public class Studente implements Comparable<Studente>{
 			return true;
 		return false;
 	}
-	
+
 	/**
 	 * Confronta due oggetti restituendo l'ordinamento
 	 * @param s
@@ -162,7 +152,7 @@ public class Studente implements Comparable<Studente>{
 	public int compareTo(Studente s) {
 		String matricolaS=String.valueOf(matricola);
 		String altraMatricolaS=String.valueOf(s.getMatricola());
-		
+
 		//nessuna condizione, la matricola è sempre univoca
 		return matricolaS.compareTo(altraMatricolaS);
 	}
@@ -191,7 +181,6 @@ public class Studente implements Comparable<Studente>{
 				+ "]";
 	}
 
-	private String nome, cognome;
-	private int matricola;
+	private String nome, cognome, matricola;
 	private List<Esame> esami;
 }

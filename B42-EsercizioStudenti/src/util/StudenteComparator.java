@@ -1,6 +1,8 @@
-package comparator;
+package util;
 
 import java.util.Comparator;
+
+import classi.Studente;
 
 /**
  * Modella metodi speciali di confronto degli attributi di uno studente

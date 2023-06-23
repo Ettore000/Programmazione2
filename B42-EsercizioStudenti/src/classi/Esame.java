@@ -4,6 +4,8 @@ import java.io.PrintStream;
 import java.util.Scanner;
 
 import util.Costante;
+import util.VotoOltreIlMassimoException;
+import util.VotoOltreIlMinimoException;
 
 /**
  * Modella un esame
@@ -15,7 +17,7 @@ public class Esame implements Comparable<Esame>{
 	 * @param cognome
 	 * @param matricola
 	 */
-	public Esame(String materia, int voto, int matricolaStudente) {
+	public Esame(String materia, int voto, String matricolaStudente) {
 		this.materia=materia;
 		this.voto=voto;
 		this.matricolaStudente=matricolaStudente;
@@ -37,15 +39,23 @@ public class Esame implements Comparable<Esame>{
 	public int getVoto() {
 		return voto;
 	}
+	
+	/**
+	 * Modifica il voto di un esame in caso il voto inserito nel read non sia conforme
+	 * @param voto
+	 */
+	public void setVoto(int voto) {
+		this.voto = voto;
+	}
 
 	/**
 	 * Ottiene la matricola dello studente che ha svolto l'esame
 	 * @return matricolaStudente
 	 */
-	public int getMatricolaStudente() {
+	public String getMatricolaStudente() {
 		return matricolaStudente;
 	}
-	
+
 	/**
 	 * Ottiene uno studente associato a un esame
 	 * @return studente
@@ -69,37 +79,32 @@ public class Esame implements Comparable<Esame>{
 	public static Esame read() {
 		Scanner sc=new Scanner(System.in);
 
-		String materia="", matricolaStudenteS="", votoS="";
-		int voto=0, matricolaStudente=0;
+		String materia="", matricolaStudente="", votoS="";
+		int voto=0;
 
 		System.out.print("Materia: ");
 		materia=sc.nextLine();
 		if(materia.equals(""))return null;
-		
-		
+
+
 		try {
 			System.out.print("Voto: ");
 			votoS = sc.nextLine();
-			if (votoS.equals(""))
-				return null;
+			if (votoS.equals(""))return null;
 			voto = Integer.parseInt(votoS);
+			if(voto<18) {
+				throw new VotoOltreIlMinimoException("Il voto inserito va oltre il minimo consentito, al voto non verra' assegnato nessun valore");
+			} else if(voto>30) {
+				throw new VotoOltreIlMassimoException("Il voto inserito va oltre il massimo consentito, al voto non verra' assegnato nessun valore");
+			}
 		} catch (NumberFormatException e) {
-			System.err.println("Voto inserito non conforme, al voto verrà assegnato il valore "+Costante.VOTO_NON_VALIDO);
-			System.err.println("Modificarlo il prima possibile");
-			voto=Costante.VOTO_NON_VALIDO;//TODO giusto?
-		}//TODO limite di voto 30 o 5
-		
-		try {
-			System.out.print("Matricola studente: ");
-			matricolaStudenteS = sc.nextLine();
-			if (matricolaStudenteS.equals(""))
-				return null;
-			matricolaStudente = Integer.parseInt(matricolaStudenteS);
-		} catch (Exception e) {
-			System.err.println("Matricola studente inserita non conforme, l'inserimento dell'esame verrà annullato");
-			return null;//TODO giusto?
+			System.err.println("Voto inserito non conforme, al voto non verra' assegnato nessun valore");
 		}
-		
+
+		System.out.print("Matricola studente: ");
+		matricolaStudente=sc.nextLine();
+		if(matricolaStudente.equals(""))return null;
+
 		return new Esame(materia, voto, matricolaStudente);
 	}
 
@@ -109,19 +114,18 @@ public class Esame implements Comparable<Esame>{
 	 * @return Esame(materia, voto, matricolaStudente)
 	 */
 	public static Esame read(Scanner sc) {
-		String materia="", matricolaStudenteS="", votoS="";
-		int voto=0, matricolaStudente=0;
+		String materia="", matricolaStudente="", votoS="";
+		int voto=0;
 
 		if(!sc.hasNext())return null;
 		materia=sc.next();
-		
+
 		if(!sc.hasNext())return null;
 		votoS=sc.next();
 		voto=Integer.parseInt(votoS);
 
 		if(!sc.hasNext())return null;
-		matricolaStudenteS=sc.next();
-		matricolaStudente=Integer.parseInt(matricolaStudenteS);
+		matricolaStudente=sc.next();
 
 		return new Esame(materia, voto, matricolaStudente);
 	}
@@ -133,9 +137,11 @@ public class Esame implements Comparable<Esame>{
 	@Override
 	public int hashCode() {
 		final int prime = Costante.NUMERO_PRIMO;
-		int result = matricolaStudente;
+		int result = Costante.INTERO_UNITARIO;//TODO giusto?
+		
 		result = prime * result + materia.hashCode();
-		result = prime * result + matricolaStudente;
+		result = prime * result + matricolaStudente.hashCode();
+		
 		return result;
 	}
 
@@ -146,7 +152,7 @@ public class Esame implements Comparable<Esame>{
 	 */
 	public boolean equals(Esame e) {
 		if(materia.equals(e.materia))
-			if(matricolaStudente==e.matricolaStudente)
+			if(matricolaStudente.equals(e.getMatricolaStudente()))
 				return true;
 		return false;
 	}
@@ -158,10 +164,7 @@ public class Esame implements Comparable<Esame>{
 	 */
 	@Override
 	public int compareTo(Esame e) {
-		String matricolaStudenteS=String.valueOf(matricolaStudente);
-		String altraMatricolaStudente=String.valueOf(e.getMatricolaStudente());
-		
-		return matricolaStudenteS.compareTo(altraMatricolaStudente);
+		return matricolaStudente.compareTo(e.getMatricolaStudente());
 	}
 
 	/**
@@ -188,7 +191,7 @@ public class Esame implements Comparable<Esame>{
 		return "Studente [materia=" + materia + ", voto=" + voto + ", matricolaStudente=" + matricolaStudente + "]";
 	}
 
-	private String materia;
-	private int voto, matricolaStudente;
+	private String materia, matricolaStudente;
+	private int voto;
 	private Studente studente;
 }

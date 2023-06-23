@@ -37,7 +37,7 @@ public class Registro {
 			e=Esame.read(scEsami);
 		}
 	}
-	
+
 	/**
 	 * Crea un registro filtrato
 	 * @param studentiFilter
@@ -53,9 +53,9 @@ public class Registro {
 	 * @param matricola
 	 * @return Studente
 	 */
-	public Studente findStudenteByMatricola(int matricola) {
+	public Studente findStudenteByMatricola(String matricola) {
 		for (Studente studente : studenti) {
-			if(studente.getMatricola()==matricola)
+			if(studente.getMatricola().equals(matricola))
 				return studente;
 		}
 		return null;
@@ -69,10 +69,10 @@ public class Registro {
 	public Registro filterStudentiByNome(String nome) {
 		List<Studente> studentiFilter=new ArrayList<Studente>();
 		List<Esame> esamiFilter=new ArrayList<Esame>();
-		
+
 		for (Studente studente : studenti) {//TODO giusto?
 			if(studente.getNome().equalsIgnoreCase(nome)) {
-				studentiFilter.add(studente);//TODO possiamo invertire i for? 
+				studentiFilter.add(studente); 
 				for (Esame esame : esami) {
 					if(esame.getStudente().equals(studente)) {
 						esamiFilter.add(esame);
@@ -82,7 +82,7 @@ public class Registro {
 		}
 		return new Registro(studentiFilter, esamiFilter);
 	}
-	
+
 	/**
 	 * Filtra gli studenti in base al cognome
 	 * @param cognome
@@ -91,7 +91,7 @@ public class Registro {
 	public Registro filterStudentiByCognome(String cognome) {
 		List<Studente> studentiFilter=new ArrayList<Studente>();
 		List<Esame> esamiFilter=new ArrayList<Esame>();
-		
+
 		for (Studente studente : studenti) {
 			if(studente.getCognome().equalsIgnoreCase(cognome)) {
 				studentiFilter.add(studente);
@@ -104,18 +104,18 @@ public class Registro {
 		}
 		return new Registro(studentiFilter, esamiFilter);
 	}
-	
+
 	/**
 	 * Filtra gli studenti in base alla matricola
 	 * @param matricola
 	 * @return Registro
 	 */
-	public Registro filterStudentiByMatricola(int matricola) {
+	public Registro filterStudentiByMatricola(String matricola) {
 		List<Studente> studentiFilter=new ArrayList<Studente>();
 		List<Esame> esamiFilter=new ArrayList<Esame>();
-		
+
 		for (Studente studente : studenti) {
-			if(studente.getMatricola()==matricola) {
+			if(studente.getMatricola().equals(matricola)) {
 				studentiFilter.add(studente);
 				for (Esame esame : esami) {
 					if(esame.getStudente().equals(studente)) {
@@ -126,7 +126,7 @@ public class Registro {
 		}
 		return new Registro(studentiFilter, esamiFilter);
 	}
-	
+
 	/**
 	 * Filtra gli esami in base alla materia
 	 * @param materia
@@ -135,7 +135,7 @@ public class Registro {
 	public Registro filterEsamiByMateria(String materia) {
 		List<Studente> studentiFilter=new ArrayList<Studente>();
 		List<Esame> esamiFilter=new ArrayList<Esame>();
-		
+
 		for(Esame esame : esami) {
 			if(esame.getMateria().equalsIgnoreCase(materia)) {
 				esamiFilter.add(esame);
@@ -148,7 +148,7 @@ public class Registro {
 		}
 		return new Registro(studentiFilter, esamiFilter);
 	}
-	
+
 	/**
 	 * Filtra gli esami in base al voto
 	 * @param voto
@@ -157,29 +157,37 @@ public class Registro {
 	public Registro filterEsamiByVoto(int voto) {
 		List<Studente> studentiFilter=new ArrayList<Studente>();
 		List<Esame> esamiFilter=new ArrayList<Esame>();
-		
+
 		for (Esame esame : esami) {
 			if(esame.getVoto()==voto) {
 				esamiFilter.add(esame);
-				studentiFilter.addAll(studenti);
+				for (Studente studente : studenti) {
+					if (studente.getMatricola()==esame.getMatricolaStudente()) {
+						studentiFilter.add(studente);
+					}
+				}
 			}
 		}
 		return new Registro(studentiFilter, esamiFilter);
 	}
-	
+
 	/**
 	 * Filtra gli esami in base alla matricola dello studente segnata nell'esame
 	 * @param matricolaStudente
 	 * @return Registro
 	 */
-	public Registro filterEsamiByMatricolaStudente(int matricolaStudente) {
+	public Registro filterEsamiByMatricolaStudente(String matricolaStudente) {
 		List<Studente> studentiFilter=new ArrayList<Studente>();
 		List<Esame> esamiFilter=new ArrayList<Esame>();
-		
+
 		for (Esame esame : esami) {
-			if(esame.getMatricolaStudente()==matricolaStudente) {
+			if(esame.getMatricolaStudente().equals(matricolaStudente)) {
 				esamiFilter.add(esame);
-				studentiFilter.addAll(studenti);
+				for (Studente studente : studenti) {
+					if (studente.getMatricola()==esame.getMatricolaStudente()) {
+						studentiFilter.add(studente);
+					}
+				}
 			}
 		}
 		return new Registro(studentiFilter, esamiFilter);
@@ -193,7 +201,7 @@ public class Registro {
 	public Registro sortStudentiByNome() {
 		//TODO
 	}
-	
+
 	/**
 	 * Ordina gli studenti in base al cognome
 	 * @param cognome
@@ -202,7 +210,7 @@ public class Registro {
 	public Registro sortStudentiByCognome() {
 		//TODO 
 	}
-	
+
 	/**
 	 * Ordina gli studenti in base alla matricola
 	 * @param matricola
@@ -211,7 +219,7 @@ public class Registro {
 	public Registro sortStudentiByMatricola(Studente s) {
 		List<Studente> studentiSort=new ArrayList<Studente>();
 		List<Esame> esamiSort=new ArrayList<Esame>();
-		
+
 		for (Studente studente : studenti) {
 			if(studente.compareStudenteByMatricola(s)<0) {
 				studentiSort.add(studente);
@@ -225,7 +233,7 @@ public class Registro {
 		}
 		return new Registro(studentiSort, esamiSort);
 	}
-	
+
 	/**
 	 * Ordina gli esami in base alla materia
 	 * @param materia
@@ -234,7 +242,7 @@ public class Registro {
 	public Registro sortEsamiByMateria(String materia) {
 		//TODO 
 	}
-	
+
 	/**
 	 * Ordina gli esami in base al voto
 	 * @param voto
@@ -243,7 +251,7 @@ public class Registro {
 	public Registro sortEsamiByMateria(int voto) {
 		//TODO 
 	}
-	
+
 	/**
 	 * Ordina gli esami in base alla matricola dello studente segnata nell'esame
 	 * @param matricolaStudente
