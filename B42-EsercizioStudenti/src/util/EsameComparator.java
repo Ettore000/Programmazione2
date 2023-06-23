@@ -18,7 +18,7 @@ public class EsameComparator implements Comparator<Esame> {
 		if(!e1.getMateria().equalsIgnoreCase(e2.getMateria()))
 			return e1.getMateria().compareToIgnoreCase(e2.getMateria());
 		if(e1.getVoto()!=e2.getVoto())
-			return e1.getVoto()-e2.getVoto();
+			return e1.getVoto() - e2.getVoto();
 		return e1.getMatricolaStudente().compareToIgnoreCase(e2.getMatricolaStudente());
 	}
 

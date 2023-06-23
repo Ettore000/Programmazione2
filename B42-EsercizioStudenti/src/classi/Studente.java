@@ -22,6 +22,7 @@ public class Studente implements Comparable<Studente>{
 		this.cognome=cognome;
 		this.matricola=matricola;
 		this.esami=new ArrayList<Esame>();
+		this.numeroEsami=0;
 	}
 
 	/**
@@ -62,6 +63,7 @@ public class Studente implements Comparable<Studente>{
 	 */
 	public void addEsame(Esame e) {
 		esami.add(e);
+		numeroEsami++; //incrementa di uno il numero di esami superati
 	}
 
 	/**
@@ -70,6 +72,10 @@ public class Studente implements Comparable<Studente>{
 	 */
 	public void removeEsame(Esame e) {
 		esami.remove(e);
+	}
+	
+	public int getNumeroEsami() {
+		return numeroEsami;
 	}
 
 	/**
@@ -180,4 +186,5 @@ public class Studente implements Comparable<Studente>{
 
 	private String nome, cognome, matricola;
 	private List<Esame> esami;
+	private int numeroEsami;
 }
