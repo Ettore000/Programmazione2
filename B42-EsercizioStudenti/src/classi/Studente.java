@@ -133,8 +133,8 @@ public class Studente implements Comparable<Studente>{
 	 */
 	@Override
 	public int hashCode() {
-		final int prime = 31; //i numeri primi aiutano a non avere collisioni
-		int result = 1;
+		final int prime = Costante.NUMERO_PRIMO; //i numeri primi aiutano a non avere collisioni
+		int result = matricola;
 		//possiamo scrivere solo matricola in quanto l'oggetto rappresentato da matricola è già univoco
 		result = prime * result + matricola;
 		return result;

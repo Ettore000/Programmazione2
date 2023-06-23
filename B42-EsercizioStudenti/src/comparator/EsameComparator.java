@@ -2,6 +2,8 @@ package comparator;
 
 import java.util.Comparator;
 
+import classi.Esame;
+
 /**
  * Modella metodi speciali di confronto degli attributi di un esame
  */

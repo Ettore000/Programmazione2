@@ -11,7 +11,7 @@ import util.Costante;
 /**
  * Modella un registro contenente studenti e esami
  */
-public class Registro implements Comparator<Studente> {
+public class Registro {
 	/**
 	 * Crea un registro
 	 * @param scStudente
@@ -70,10 +70,9 @@ public class Registro implements Comparator<Studente> {
 		List<Studente> studentiFilter=new ArrayList<Studente>();
 		List<Esame> esamiFilter=new ArrayList<Esame>();
 		
-		for (Studente studente : studenti) {
+		for (Studente studente : studenti) {//TODO giusto?
 			if(studente.getNome().equalsIgnoreCase(nome)) {
-				studentiFilter.add(studente);
-				//TODO questo era sbagliato? -> esamiFilter.addAll(esami);
+				studentiFilter.add(studente);//TODO possiamo invertire i for? 
 				for (Esame esame : esami) {
 					if(esame.getStudente().equals(studente)) {
 						esamiFilter.add(esame);
@@ -140,7 +139,11 @@ public class Registro implements Comparator<Studente> {
 		for(Esame esame : esami) {
 			if(esame.getMateria().equalsIgnoreCase(materia)) {
 				esamiFilter.add(esame);
-				studentiFilter.addAll(studenti); //TODO come si corregge?
+				for (Studente studente : studenti) {
+					if (studente.getMatricola()==esame.getMatricolaStudente()) {
+						studentiFilter.add(studente);//TODO giusto così?
+					}
+				}
 			}
 		}
 		return new Registro(studentiFilter, esamiFilter);
@@ -327,9 +330,4 @@ public class Registro implements Comparator<Studente> {
 
 	private List<Studente> studenti;
 	private List<Esame> esami;
-	@Override
-	public int compare(Studente o1, Studente o2) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 }

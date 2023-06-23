@@ -39,14 +39,6 @@ public class Esame implements Comparable<Esame>{
 	}
 
 	/**
-	 * Modifica il voto di uno studente associato a un esame
-	 * @param voto
-	 */
-	public void setVoto(int voto) {
-		this.voto = voto;
-	}
-
-	/**
 	 * Ottiene la matricola dello studente che ha svolto l'esame
 	 * @return matricolaStudente
 	 */
@@ -95,7 +87,7 @@ public class Esame implements Comparable<Esame>{
 			System.err.println("Voto inserito non conforme, al voto verrà assegnato il valore "+Costante.VOTO_NON_VALIDO);
 			System.err.println("Modificarlo il prima possibile");
 			voto=Costante.VOTO_NON_VALIDO;//TODO giusto?
-		}
+		}//TODO limite di voto 30 o 5
 		
 		try {
 			System.out.print("Matricola studente: ");
@@ -140,9 +132,9 @@ public class Esame implements Comparable<Esame>{
 	 */
 	@Override
 	public int hashCode() {
-		final int prime = 31;
+		final int prime = Costante.NUMERO_PRIMO;
 		int result = matricolaStudente;
-		result = prime * result + ((materia == null) ? 0 : materia.hashCode());
+		result = prime * result + materia.hashCode();
 		result = prime * result + matricolaStudente;
 		return result;
 	}
