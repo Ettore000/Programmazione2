@@ -9,6 +9,10 @@ import classi.Esame;
  */
 public class EsameComparatorByMateria implements Comparator<Esame> {
 
+	/**
+	 * Confronta due oggetti restituendo l'ordinamento per materia -> per voto -> per matricola studente
+	 * @return int
+	 */
 	@Override
 	public int compare(Esame e1, Esame e2) {
 		if(!e1.getMateria().equalsIgnoreCase(e2.getMateria()))

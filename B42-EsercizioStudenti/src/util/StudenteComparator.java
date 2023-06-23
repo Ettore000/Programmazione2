@@ -9,6 +9,10 @@ import classi.Studente;
  */
 public class StudenteComparator implements Comparator<Studente> {
 
+	/**
+	 * Confronta due oggetti restituendo l'ordinamento per  -> per  -> per 
+	 * @return int
+	 */
 	@Override
 	public int compare(Studente s1, Studente s2) {
 		// TODO Auto-generated method stub
