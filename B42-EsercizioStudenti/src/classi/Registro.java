@@ -204,14 +204,14 @@ public class Registro {
 	 * @return Registro
 	 */
 	public void sortEsamiByMateria() {
-		Comparator<Esame> comp = new EsameComparatorByMateria();
+		Comparator<Esame> compEsame = new EsameComparatorByMateria();
 		
-		TreeSet<Esame> tree = new TreeSet<Esame>(comp);
+		TreeSet<Esame> treeEsame = new TreeSet<Esame>(compEsame);
 		
 		for(Esame esame : esami) {
-			tree.add(esame);
+			treeEsame.add(esame);
 		}
-		for(Esame esame : tree) {
+		for(Esame esame : treeEsame) {
 			esame.print();
 		}
 	}
