@@ -137,10 +137,9 @@ public class Esame implements Comparable<Esame>{
 	@Override
 	public int hashCode() {
 		final int prime = Costante.NUMERO_PRIMO;
-		int result = Costante.INTERO_UNITARIO;//TODO giusto?
+		int result = matricolaStudente.hashCode();
 
 		result = prime * result + materia.hashCode();
-		result = prime * result + matricolaStudente.hashCode();
 
 		return result;
 	}
@@ -150,7 +149,7 @@ public class Esame implements Comparable<Esame>{
 	 * @param e
 	 * @return boolean
 	 */
-	public boolean equals(Esame e) {
+	public boolean equals(Esame e) {//TODO prima la matricola
 		if(materia.equals(e.materia))
 			if(matricolaStudente.equals(e.getMatricolaStudente()))
 				return true;

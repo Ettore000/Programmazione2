@@ -122,12 +122,7 @@ public class Studente implements Comparable<Studente>{
 	 */
 	@Override
 	public int hashCode() {
-		final int prime = Costante.NUMERO_PRIMO; //i numeri primi aiutano a non avere collisioni
-		int result = Costante.INTERO_UNITARIO;
-		//possiamo scrivere solo matricola in quanto l'oggetto rappresentato da matricola è già univoco
-		result = prime * result + matricola.hashCode();
-		
-		return result;
+		return matricola.hashCode();
 	}
 
 	/**
@@ -150,8 +145,8 @@ public class Studente implements Comparable<Studente>{
 	 */
 	@Override
 	public int compareTo(Studente s) {
-		if(!nome.equalsIgnoreCase(nome) ) {
-			return nome.compareToIgnoreCase(s.getMatricola());
+		if(!nome.equalsIgnoreCase(nome) ) {//TODO prima cognome
+			return nome.compareToIgnoreCase(s.getNome());
 		} else if(!cognome.equalsIgnoreCase(s.getCognome())) {
 			return cognome.compareToIgnoreCase(s.getCognome()); //TODO giusto?
 		}

@@ -5,8 +5,10 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
+import java.util.TreeSet;
 
 import util.Costante;
+import util.EsameComparatorByMateria;
 
 /**
  * Modella un registro contenente studenti e esami
@@ -70,14 +72,10 @@ public class Registro {
 		List<Studente> studentiFilter=new ArrayList<Studente>();
 		List<Esame> esamiFilter=new ArrayList<Esame>();
 
-		for (Studente studente : studenti) {//TODO giusto?
+		for (Studente studente : studenti) {
 			if(studente.getNome().equalsIgnoreCase(nome)) {
 				studentiFilter.add(studente); 
-				for (Esame esame : esami) {
-					if(esame.getStudente().equals(studente)) {
-						esamiFilter.add(esame);
-					}
-				}
+				esamiFilter.addAll(studente.getEsami());
 			}
 		}
 		return new Registro(studentiFilter, esamiFilter);
@@ -139,11 +137,7 @@ public class Registro {
 		for(Esame esame : esami) {
 			if(esame.getMateria().equalsIgnoreCase(materia)) {
 				esamiFilter.add(esame);
-				for (Studente studente : studenti) {
-					if (studente.getMatricola()==esame.getMatricolaStudente()) {
-						studentiFilter.add(studente);//TODO giusto così?
-					}
-				}
+				studentiFilter.add(esame.getStudente());
 			}
 		}
 		return new Registro(studentiFilter, esamiFilter);
@@ -239,8 +233,17 @@ public class Registro {
 	 * @param materia
 	 * @return Registro
 	 */
-	public Registro sortEsamiByMateria(String materia) {
-		//TODO 
+	public void sortEsamiByMateria() {
+		Comparator<Esame> comp = new EsameComparatorByMateria();
+		
+		TreeSet<Esame> tree = new TreeSet<Esame>(comp);
+		
+		for(Esame esame : esami) {
+			tree.add(esame);
+		}
+		for(Esame esame : tree) {
+			esame.print();
+		}
 	}
 
 	/**
