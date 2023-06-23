@@ -176,7 +176,7 @@ public class Registro {
 	 * @param nome
 	 * @return Registro
 	 */
-	public Registro sortStudentiByNome() {
+	public void sortStudentiByNome() {
 		//TODO
 	}
 
@@ -185,7 +185,7 @@ public class Registro {
 	 * @param cognome
 	 * @return Registro
 	 */
-	public Registro sortStudentiByCognome() {
+	public void sortStudentiByCognome() {
 		//TODO 
 	}
 
@@ -194,7 +194,7 @@ public class Registro {
 	 * @param matricola
 	 * @return Registro
 	 */
-	public Registro sortStudentiByMatricola(Studente s) {
+	public void sortStudentiByMatricola() {
 		//TODO
 	}
 
@@ -221,7 +221,7 @@ public class Registro {
 	 * @param voto
 	 * @return Registro
 	 */
-	public Registro sortEsamiByMateria(int voto) {
+	public void sortEsamiByVoto() {
 		//TODO 
 	}
 
@@ -230,7 +230,7 @@ public class Registro {
 	 * @param matricolaStudente
 	 * @return Registro
 	 */
-	public Registro sortEsamiByMateria(int matricolaStudente) {
+	public void sortEsamiByStudente() {
 		//TODO 
 	}
 
