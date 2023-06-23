@@ -150,11 +150,13 @@ public class Studente implements Comparable<Studente>{
 	 */
 	@Override
 	public int compareTo(Studente s) {
-		String matricolaS=String.valueOf(matricola);
-		String altraMatricolaS=String.valueOf(s.getMatricola());
-
-		//nessuna condizione, la matricola è sempre univoca
-		return matricolaS.compareTo(altraMatricolaS);
+		if(!nome.equalsIgnoreCase(nome) ) {
+			return nome.compareToIgnoreCase(s.getMatricola());
+		} else if(!cognome.equalsIgnoreCase(s.getCognome())) {
+			return cognome.compareToIgnoreCase(s.getCognome()); //TODO giusto?
+		}
+		
+		return matricola.compareTo(s.getMatricola());
 	}
 
 	/**

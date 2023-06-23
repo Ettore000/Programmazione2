@@ -39,7 +39,7 @@ public class Esame implements Comparable<Esame>{
 	public int getVoto() {
 		return voto;
 	}
-	
+
 	/**
 	 * Modifica il voto di un esame in caso il voto inserito nel read non sia conforme
 	 * @param voto
@@ -138,10 +138,10 @@ public class Esame implements Comparable<Esame>{
 	public int hashCode() {
 		final int prime = Costante.NUMERO_PRIMO;
 		int result = Costante.INTERO_UNITARIO;//TODO giusto?
-		
+
 		result = prime * result + materia.hashCode();
 		result = prime * result + matricolaStudente.hashCode();
-		
+
 		return result;
 	}
 
@@ -164,7 +164,10 @@ public class Esame implements Comparable<Esame>{
 	 */
 	@Override
 	public int compareTo(Esame e) {
-		return matricolaStudente.compareTo(e.getMatricolaStudente());
+		if(!materia.equalsIgnoreCase(e.getMateria())) {
+			return materia.compareToIgnoreCase(e.getMateria());
+		}
+		return matricolaStudente.compareToIgnoreCase(e.getMatricolaStudente());
 	}
 
 	/**
