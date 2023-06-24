@@ -153,6 +153,42 @@ public class Registro {
 		}
 		return new Registro(studentiFilter, esamiFilter);
 	}
+	
+	/**
+	 * Filtra gli esami con voto inferiore al parametro
+	 * @param voto
+	 * @return Registro
+	 */
+	public Registro filterEsamiByVotoInf(int voto) {
+		List<Studente> studentiFilter=new ArrayList<Studente>();
+		List<Esame> esamiFilter=new ArrayList<Esame>();
+
+		for (Esame esame : esami) {
+			if(esame.getVoto()<voto) {
+				esamiFilter.add(esame);
+				studentiFilter.add(esame.getStudente());
+			}
+		}
+		return new Registro(studentiFilter, esamiFilter);
+	}
+	
+	/**
+	 * Filtra gli esami con voto superiore a al parametro
+	 * @param voto
+	 * @return Registro
+	 */
+	public Registro filterEsamiByVotoSup(int voto) {
+		List<Studente> studentiFilter=new ArrayList<Studente>();
+		List<Esame> esamiFilter=new ArrayList<Esame>();
+
+		for (Esame esame : esami) {
+			if(esame.getVoto()>voto) {
+				esamiFilter.add(esame);
+				studentiFilter.add(esame.getStudente());
+			}
+		}
+		return new Registro(studentiFilter, esamiFilter);
+	}
 
 	/**
 	 * Filtra gli esami in base alla matricola dello studente segnata nell'esame
@@ -198,7 +234,7 @@ public class Registro {
 			treeStudenti.add(studente);
 		}
 		for (Studente studente : treeStudenti) {
-			studente.print();
+			System.out.println("Studente: "+studente.getNome()+" "+studente.getCognome()+", esami superati="+studente.getNumeroEsami());
 		}
 	}
 
