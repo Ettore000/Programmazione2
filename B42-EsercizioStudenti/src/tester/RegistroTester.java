@@ -24,6 +24,9 @@ public class RegistroTester {
 		Studente s=registro.findStudenteByMatricola("863002805");
 		s.print();
 		System.out.println(s.getEsami());
+		System.out.println(s.getNome()+" "+s.getCognome()+" ha una media di: "+registro.filterEsamiByMatricolaStudente(s.getMatricola()).getVotoMedio()+"/30");
+		System.out.println("il suo voto massimo e': "+registro.filterEsamiByMatricolaStudente(s.getMatricola()).getVotoMassimo());
+		System.out.println("il suo voto minimo e': "+registro.filterEsamiByMatricolaStudente(s.getMatricola()).getVotoMinimo());
 		
 		//Visualizza su schermo informazioni sullo studente e la lista degli esami svolti
 		System.out.println("\n---Studente Ettore Panasia---\n");
@@ -47,6 +50,13 @@ public class RegistroTester {
 		
 		System.out.println("\n---Ordinamento esami per materia---\n");
 		registro.sortEsamiByMateria();
+		
+		//Calcoli
+		System.out.println("\nVoto massimo registrato: "+registro.getVotoMassimo());
+		System.out.println("Voto minimo registrato: "+registro.getVotoMinimo());
+		System.out.println("Media dei voti totali di tutti gli studenti: "+registro.getVotoMedio());
+		
+		
 	}
 
 }
