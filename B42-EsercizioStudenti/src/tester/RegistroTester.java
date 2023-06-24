@@ -15,7 +15,10 @@ public class RegistroTester {
 	public static void main(String[] args) throws FileNotFoundException {
 		Registro registro=new Registro(new Scanner(new File(Costante.FILE_STUDENTI)), new Scanner(new File(Costante.FILE_ESAMI)));
 		
-		registro.
+		//i file devono essere già popolati
+		registro.print(); //stampa tutti gli oggetti
+		
+		
 	}
 
 }
