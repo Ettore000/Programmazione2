@@ -72,6 +72,7 @@ public class Studente implements Comparable<Studente>{
 	 */
 	public void removeEsame(Esame e) {
 		esami.remove(e);
+		numeroEsami--; //decrementa di uno il numero di esami superati
 	}
 	
 	public int getNumeroEsami() {
