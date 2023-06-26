@@ -25,8 +25,8 @@ public class RegistroTester {
 		Studente s=registro.findStudenteByMatricola("863002805");
 		s.print();
 		System.out.println(s.getEsami());
-		System.out.println(s.getNome()+" "+s.getCognome()+" ha una media di: "+registro.filterEsamiByMatricolaStudente(s.getMatricola()).getVotoMedio()+"/30");
-		System.out.println("il suo voto massimo e': "+registro.filterEsamiByMatricolaStudente(s.getMatricola()).getVotoMassimo());
+		System.out.println(s.getNome()+" "+s.getCognome()+" ha una media di: "+registro.filterEsamiByMatricolaStudente(s.getMatricola()).getVotoMedio()+"/30");  //implementare all'interno di Studente
+		System.out.println("il suo voto massimo e': "+registro.filterEsamiByMatricolaStudente(s.getMatricola()).getVotoMassimo()); //non serve filtrare
 		System.out.println("il suo voto minimo e': "+registro.filterEsamiByMatricolaStudente(s.getMatricola()).getVotoMinimo());
 		
 		//Visualizza su schermo informazioni sullo studente e la lista degli esami svolti

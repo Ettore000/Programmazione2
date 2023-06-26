@@ -15,7 +15,7 @@ public class StudenteComparator implements Comparator<Studente> {
 	 */
 	@Override
 	public int compare(Studente s1, Studente s2) {
-		if(!s1.getCognome().equals(s2.getCognome()))
+		if(!s1.getCognome().equalsIgnoreCase(s2.getCognome()))
 			return s1.getCognome().compareToIgnoreCase(s2.getCognome());
 		if(!s1.getNome().equalsIgnoreCase(s2.getNome()))
 			return s1.getNome().compareToIgnoreCase(s2.getNome());
