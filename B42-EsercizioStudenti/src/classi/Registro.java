@@ -61,7 +61,7 @@ public class Registro {
 			if(studente.getMatricola().equals(matricola))
 				return studente;
 		}
-		return null;
+		return null;//TODO gestisci l'eccezione
 	}
 
 	/**
