@@ -41,14 +41,6 @@ public class Esame implements Comparable<Esame>{
 	}
 
 	/**
-	 * Modifica il voto di un esame in caso il voto inserito nel read non sia conforme
-	 * @param voto
-	 */
-	public void setVoto(int voto) {
-		this.voto = voto;
-	}
-
-	/**
 	 * Ottiene la matricola dello studente che ha svolto l'esame
 	 * @return matricolaStudente
 	 */

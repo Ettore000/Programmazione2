@@ -10,6 +10,7 @@ import util.Costante;
 import util.EsameComparator;
 import util.StudenteComparator;
 import util.StudenteComparatorByNumeroEsami;
+import util.StudenteNonTrovatoException;
 
 /**
  * Modella un registro contenente studenti e esami
@@ -61,7 +62,7 @@ public class Registro {
 			if(studente.getMatricola().equals(matricola))
 				return studente;
 		}
-		return null;//TODO gestisci l'eccezione
+		throw new StudenteNonTrovatoException("Lo studente ricercato non esiste");
 	}
 
 	/**
