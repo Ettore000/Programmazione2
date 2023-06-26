@@ -2,6 +2,7 @@ package tester;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 import classi.Registro;
@@ -13,7 +14,7 @@ import util.Costante;
  */
 public class RegistroTester {
 
-	public static void main(String[] args) throws FileNotFoundException {
+	public static void main(String[] args) throws FileNotFoundException, IOException {
 		Registro registro=new Registro(new Scanner(new File(Costante.FILE_STUDENTI)), new Scanner(new File(Costante.FILE_ESAMI)));
 		
 		//i file devono essere già popolati

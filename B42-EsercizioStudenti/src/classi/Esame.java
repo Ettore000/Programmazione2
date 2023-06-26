@@ -125,9 +125,9 @@ public class Esame implements Comparable<Esame>{
 			if(!sc.hasNext())return null;
 			votoS=sc.next();
 			voto=Integer.parseInt(votoS);
-			if(voto<18) {
+			if(voto<Costante.VOTO_MINIMO) {
 				throw new VotoOltreIlMinimoException("Il voto letto va oltre il minimo consentito, la lettura dell'esame verra' annullata");
-			} else if(voto>30) {
+			} else if(voto>Costante.VOTO_MASSIMO) {
 				throw new VotoOltreIlMassimoException("Il voto letto va oltre il massimo consentito, la lettura dell'esame verra' annullata");
 			}
 		} catch (NumberFormatException e) {
