@@ -53,7 +53,7 @@ public class Registro {
 	}
 
 	/**
-	 * Cerca un esame in base a un criterio e al valore cercato
+	 * Cerca uno studente in base alla matricola
 	 * @param matricola
 	 * @return Studente
 	 */

@@ -166,8 +166,8 @@ public class Esame implements Comparable<Esame>{
 	 */
 	@Override
 	public int compareTo(Esame e) {
-		if(!matricolaStudente.equalsIgnoreCase(e.getMatricolaStudente()))
-			return matricolaStudente.compareToIgnoreCase(e.getMatricolaStudente());
+		if(!matricolaStudente.equals(e.getMatricolaStudente()))
+			return matricolaStudente.compareTo(e.getMatricolaStudente());
 		return materia.compareToIgnoreCase(e.getMateria());
 	}
 
